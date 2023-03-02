@@ -5,6 +5,8 @@ using UnityEngine;
 public class InitPlayer : MonoBehaviour
 {
     public static Character player;
+    [SerializeField]
+    public Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,11 @@ public class InitPlayer : MonoBehaviour
         {
             case "HeroSword":
                 player = new HeroSword(playerObject);
+                player.camera = camera;
                 break;
             case "HeroGun":
                 player = new HeroGun(playerObject);
+                player.camera = camera;
                 break;
         }
     }

@@ -241,7 +241,7 @@ MonoBehaviour:
   - {fileID: 2019899899}
   characterName: {fileID: 2096504840}
   characterPrefabs:
-  - {fileID: 4078937535303857391, guid: 116cf81f5105e184fa426cd3fe63ff03, type: 3}
+  - {fileID: 5635006113469532884, guid: 2ab2979544e298e46958acbee7af7a78, type: 3}
   - {fileID: 4078937535303857391, guid: 116cf81f5105e184fa426cd3fe63ff03, type: 3}
 --- !u!4 &139613343
 Transform:

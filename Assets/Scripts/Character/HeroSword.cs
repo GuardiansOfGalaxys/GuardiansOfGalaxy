@@ -7,7 +7,7 @@ public class HeroSword : Character
     {
         health = 15;
         damage = 12;
-        speed = 6;
+        speed = 3;
         speedAttack = 1f;
     }
 }

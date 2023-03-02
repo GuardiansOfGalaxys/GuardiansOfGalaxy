@@ -18,12 +18,14 @@ public class Character
 
     public Transform transform { get; set; }
 
+    public Camera camera { get; set; }
+
     private Vector2 axisMovement;
+    private Vector2 mousePos;
 
     public Character(GameObject gameObject)
     {
         health = 10;
-        speed = 6;
         damage = 10;
         speedAttack = 0;
         body = gameObject.GetComponent<Rigidbody2D>();
@@ -38,21 +40,28 @@ public class Character
         InputHandle();
         FixedUpdate();
 
+       
     }
 
     private void InputHandle()
     {
         axisMovement.x = Input.GetAxisRaw("Horizontal");
         axisMovement.y = Input.GetAxisRaw("Vertical");
+
+        mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
     }
     private void FixedUpdate()
     {
+        
         Move();
     }
 
     private void Move()
     {
-        body.velocity = axisMovement.normalized * speed;
+        body.MovePosition(body.position + axisMovement * speed * Time.fixedDeltaTime);
+        Vector2 lookdir = mousePos - body.position;
+        float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
+        body.rotation = angle;
         CheckForFlipping();
     }
 
