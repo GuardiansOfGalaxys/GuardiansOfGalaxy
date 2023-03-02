@@ -1,18 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapTrigger : MonoBehaviour
 {
     public Transform currentMap;
-    public Transform player;
     public List<Transform> listTargetLeft;
     public List<Transform> listTargetRight;
     public List<Transform> listTargetTop;
     public List<Transform> listTargetBottom;
-    public float xOffset = 0f;
-    public float yOffset = 0f;
-    public float moveMapSpeed = 100f;
+    readonly float xOffset = (float)EnumScript.Map.x;
+    readonly float yOffset = (float)EnumScript.Map.y;
+    readonly float moveMapSpeed = (float)EnumScript.Map.moveSpeed;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -25,47 +23,26 @@ public class MapTrigger : MonoBehaviour
 
     private void MoveMap()
     {
-        if (MapIsMoved()) return;
         Vector3 newPos;
-        if (player.position.x < currentMap.position.x)
+        listTargetRight.ForEach(t =>
         {
-            listTargetRight.ForEach(t =>
-            {
-                newPos = new Vector3(currentMap.position.x + xOffset, t.position.y, 0f);
-                t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-            });
-        }
-        if (player.position.x > currentMap.position.x)
+            newPos = new Vector3(currentMap.position.x + xOffset, t.position.y, 0f);
+            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
+        });
+        listTargetLeft.ForEach(t =>
         {
-            listTargetLeft.ForEach(t =>
-            {
-                newPos = new Vector3(currentMap.position.x - xOffset, t.position.y, 0f);
-                t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-            });
-        }
-        if (player.position.y > currentMap.position.y)
+            newPos = new Vector3(currentMap.position.x - xOffset, t.position.y, 0f);
+            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
+        });
+        listTargetBottom.ForEach(t =>
         {
-            listTargetBottom.ForEach(t =>
-            {
-                newPos = new Vector3(t.position.x, currentMap.position.y - yOffset, 0f);
-                t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-            });
-        }
-        if (player.position.y < currentMap.position.y)
+            newPos = new Vector3(t.position.x, currentMap.position.y - yOffset, 0f);
+            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
+        });
+        listTargetTop.ForEach(t =>
         {
-            listTargetTop.ForEach(t =>
-            {
-                newPos = new Vector3(t.position.x, currentMap.position.y + yOffset, 0f);
-                t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-            });
-        }
-    }
-
-    private bool MapIsMoved()
-    {
-        return currentMap.position.x > listTargetLeft[0].position.x
-            && currentMap.position.x < listTargetRight[0].position.x
-            && currentMap.position.y < listTargetTop[0].position.y
-            && currentMap.position.y > listTargetBottom[0].position.y;
+            newPos = new Vector3(t.position.x, currentMap.position.y + yOffset, 0f);
+            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
+        });
     }
 }
