@@ -5,25 +5,25 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField]
-    GameObject bullet;
+    public GameObject bullet;
     [SerializeField]
-    public Transform firepoint;
+    public Transform firePoint;
+
+    public float bulletForce = 20f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
     }
-    private void Shoot()
+    void Shoot()
     {
-       
-        GameObject bull = Instantiate(bullet, firepoint.position, firepoint.rotation);
+        GameObject bull = Instantiate(bullet, firePoint.position, firePoint.rotation);
         // get the rigidbody component of the bullet object
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * 20;
-        /*rb.AddForce(transform.up * 20, ForceMode2D.Impulse);*/
+        Rigidbody2D rb = bull.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 }
