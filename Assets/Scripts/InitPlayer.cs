@@ -6,7 +6,7 @@ public class InitPlayer : MonoBehaviour
 {
     public static Character player;
     [SerializeField]
-    public Camera camera;
+    public Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +18,13 @@ public class InitPlayer : MonoBehaviour
         {
             case "HeroSword":
                 player = new HeroSword(playerObject);
-                player.camera = camera;
+                player.camera = cam;
                 break;
             case "HeroGun":
                 player = new HeroGun(playerObject);
-                player.camera = camera;
+                player.camera = cam;
                 break;
         }
     }
-
-
         
 }

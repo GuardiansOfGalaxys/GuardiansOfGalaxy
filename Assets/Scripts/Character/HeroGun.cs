@@ -10,5 +10,6 @@ public class HeroGun : Character
         speed = 6;
         speedAttack = 0.75f;
     }
+
 }
 

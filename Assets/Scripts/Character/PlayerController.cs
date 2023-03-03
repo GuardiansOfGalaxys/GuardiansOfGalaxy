@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     {
         player = InitPlayer.player;
     }
-
     // Update is called once per frame
     void Update()
     {

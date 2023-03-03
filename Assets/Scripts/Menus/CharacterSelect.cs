@@ -18,7 +18,6 @@ public class CharacterSelect : MonoBehaviour
         index = 0;
         selectCharacter();
     }
-
     public void OnPlayBtnClick()
     {
         SceneManager.LoadScene(1);

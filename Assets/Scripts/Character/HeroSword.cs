@@ -10,4 +10,5 @@ public class HeroSword : Character
         speed = 3;
         speedAttack = 1f;
     }
+
 }
