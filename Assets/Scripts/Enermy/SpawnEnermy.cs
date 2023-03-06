@@ -54,7 +54,7 @@ public class SpawnEnermy : MonoBehaviour
     {
         GameObject a;
         int random = Random.Range(0, 10);
-      
+
         if (random >= 0 && random <= 4)
         {
             a = Instantiate(enemyLv1Prefab, Gennerate(), Quaternion.identity);
@@ -64,30 +64,26 @@ public class SpawnEnermy : MonoBehaviour
         else if (random >= 5 && random <= 7)
         {
             a = Instantiate(enemyLv2Prefab, Gennerate(), Quaternion.identity);
-           // lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 2));
+            // lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 2));
         }
-        else 
+        else
         {
             a = Instantiate(enemyLv3Prefab, Gennerate(), Quaternion.identity);
             //lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 3));
-            
+
         }
         Debug.Log(random);
     }
     Vector3 Gennerate()
     {
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
-        // save screen edges in world coordinates
-        float screenZ = -Camera.main.transform.position.z;
-        Vector3 lowerLeftCornerScreen = new Vector3(0, 0, screenZ);
-        Vector3 upperRightCornerScreen = new Vector3(screenWidth, screenHeight, screenZ);
-        Vector3 lowerLeftCornerWorld = Camera.main.ScreenToWorldPoint(lowerLeftCornerScreen);
-        Vector3 upperRightCornerWorld = Camera.main.ScreenToWorldPoint(upperRightCornerScreen);
-        float screenLeft = lowerLeftCornerWorld.x;
-        float screenRight = upperRightCornerWorld.x;
-        float screenTop = upperRightCornerWorld.y;
-        float screenBottom = lowerLeftCornerWorld.y;
-        return new Vector3(Random.Range(screenLeft, screenRight), Random.Range(screenBottom, screenTop), -Camera.main.transform.position.z);
+        Camera mainCamera = Camera.main;
+
+        float cameraHeight = 2f * mainCamera.orthographicSize;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+
+        float xRange = cameraWidth / 2f;
+        float yRange = cameraHeight / 2f;
+
+        return new Vector3(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange), 0);
     }
 }
