@@ -59,6 +59,7 @@ public class Character
     private void Move()
     {
         body.MovePosition(body.position + axisMovement * speed * Time.fixedDeltaTime);
+        camera.transform.position = new Vector3(body.position.x, body.position.y, -10);
         Vector2 lookdir = mousePos - body.position;
         float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
         body.rotation = angle;

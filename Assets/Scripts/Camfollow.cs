@@ -1,31 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class InitPlayer : MonoBehaviour
+public class Camfollow : MonoBehaviour
 {
+    //public GameObject player;
     public static Character player;
-    [SerializeField]
-    public Camera camera;
     // Start is called before the first frame update
     void Start()
     {
         GameObject selectedCharater = CharacterSelect.selectedCharater;
-        GameObject playerObject = Instantiate(selectedCharater, new Vector3(0,0,0), Quaternion.identity);
+        GameObject playerObject = Instantiate(selectedCharater, new Vector3(0, 0, 0), Quaternion.identity);
         playerObject.name = "Player";
-
         switch (selectedCharater.name)
         {
             case "HeroSword":
                 player = new HeroSword(playerObject);
-                player.camera = camera;
                 break;
             case "HeroGun":
                 player = new HeroGun(playerObject);
-                player.camera = camera;
                 break;
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+
+    }
 }
