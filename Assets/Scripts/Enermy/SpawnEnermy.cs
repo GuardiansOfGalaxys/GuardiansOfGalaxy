@@ -35,7 +35,7 @@ public class SpawnEnermy : MonoBehaviour
     void Start()
     {
         timerES = gameObject.AddComponent<TimerEnermySpawn>();
-        timerES.Duration = 0.2f;
+        timerES.Duration = 2f;
         timerES.Run();
     }
 
@@ -45,7 +45,7 @@ public class SpawnEnermy : MonoBehaviour
         if (timerES.Finished) //&& isPlay == true)
         {
             SpawnObject();
-            timerES.Duration = 0.2f;
+            timerES.Duration = 2f;
             timerES.Run();
         }
     }
