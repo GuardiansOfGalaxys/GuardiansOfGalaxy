@@ -26,22 +26,22 @@ public class MapTrigger : MonoBehaviour
         Vector3 newPos;
         listTargetRight.ForEach(t =>
         {
-            newPos = new Vector3(currentMap.position.x + xOffset, t.position.y, 0f);
+            newPos = new Vector3(currentMap.position.x + xOffset, t.position.y, t.position.z);
             t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
         });
         listTargetLeft.ForEach(t =>
         {
-            newPos = new Vector3(currentMap.position.x - xOffset, t.position.y, 0f);
+            newPos = new Vector3(currentMap.position.x - xOffset, t.position.y, t.position.z);
             t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
         });
         listTargetBottom.ForEach(t =>
         {
-            newPos = new Vector3(t.position.x, currentMap.position.y - yOffset, 0f);
+            newPos = new Vector3(t.position.x, currentMap.position.y - yOffset, t.position.z);
             t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
         });
         listTargetTop.ForEach(t =>
         {
-            newPos = new Vector3(t.position.x, currentMap.position.y + yOffset, 0f);
+            newPos = new Vector3(t.position.x, currentMap.position.y + yOffset, t.position.z);
             t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
         });
     }
