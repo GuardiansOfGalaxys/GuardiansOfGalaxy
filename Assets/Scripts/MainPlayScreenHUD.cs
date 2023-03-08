@@ -18,16 +18,16 @@ public class MainPlayScreenHUD : IntEventInvoker
     {
         // create and start game timer
         gameTimer = gameObject.AddComponent<Timer>();
-        gameTimer.AddTimerFinishedEventListener(HandleGameTimerFinishedEvent);
+        //gameTimer.AddTimerFinishedEventListener(HandleGameTimerFinishedEvent);
         gameTimer.Duration = 30;
         gameTimer.Run();
 
         // add self as timer changed event invoker
-        unityEvents.Add(EventName.TimerChangedEvent, gameTimer.TimerChangedEvent);
-        EventManager.AddInvoker(EventName.TimerChangedEvent, this);
+        //unityEvents.Add(EventName.TimerChangedEvent, gameTimer.TimerChangedEvent);
+        //EventManager.AddInvoker(EventName.TimerChangedEvent, this);
 
         // add listener for game over event
-        EventManager.AddListener(EventName.GameOverEvent, HandleGameOverEvent);
+        //EventManager.AddListener(EventName.GameOverEvent, HandleGameOverEvent);
     }
 
     // Start is called before the first frame update
