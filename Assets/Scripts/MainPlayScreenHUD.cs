@@ -23,8 +23,8 @@ public class MainPlayScreenHUD : IntEventInvoker
         gameTimer.Run();
 
         // add self as timer changed event invoker
-        //unityEvents.Add(EventName.TimerChangedEvent, gameTimer.TimerChangedEvent);
-        //EventManager.AddInvoker(EventName.TimerChangedEvent, this);
+        unityEvents.Add(EventName.TimerChangedEvent, gameTimer.TimerChangedEvent);
+        EventManager.AddInvoker(EventName.TimerChangedEvent, this);
 
         // add listener for game over event
         //EventManager.AddListener(EventName.GameOverEvent, HandleGameOverEvent);

@@ -40,7 +40,7 @@ public class HUD : MonoBehaviour
 		//EventManager.AddListener(EventName.HealthChangedEvent, HandleHealthChangedEvent);
 
 		// add listener for TimerChangedEvent and initialize timer text
-		//EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
+		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
 		timerText.text = "30";
 	}
 
