@@ -72,7 +72,6 @@ public class SpawnEnermy : MonoBehaviour
             //lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 3));
 
         }
-        Debug.Log(random);
     }
     Vector3 Gennerate()
     {
