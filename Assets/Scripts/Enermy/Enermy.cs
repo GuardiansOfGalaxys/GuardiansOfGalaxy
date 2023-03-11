@@ -5,25 +5,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enermy : MonoBehaviour
 {
-    public enum EnermyType
-    {
-        green,
-        yellow,
-        red
-    }
 
-    public EnermyType type;
-    [SerializeField]
-    public GameObject greenPrefab;
-    [SerializeField]
-    public GameObject yellowPrefab;
-    [SerializeField]
-    public GameObject redPrefab;
-    [SerializeField]
-    public GameObject explosivePrefab;
-
-    public float speed = 1.0f;
+    public float speed = 3f;
     private Transform target;
+    private float distance;
 
     //public static List<EnermyS> lstEner= new List<EnermyS>();
     // Start is called before the first frame update
@@ -36,9 +21,15 @@ public class Enermy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+
+        //transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        distance = Vector2.Distance(transform.position, target.position);
+        Vector2 direction = target.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.position = Vector2.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //}
+    
 }

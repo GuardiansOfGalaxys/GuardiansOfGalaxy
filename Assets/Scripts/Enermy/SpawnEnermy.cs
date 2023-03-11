@@ -43,7 +43,7 @@ public class SpawnEnermy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerES.Finished) //&& isPlay == true)
+        if (timerES.Finished) 
         {
             SpawnObject();
             timerES.Duration = 2f;
@@ -75,7 +75,7 @@ public class SpawnEnermy : MonoBehaviour
             //lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 3));
 
         }
-        Debug.Log(random);
+        //Debug.Log(random);
         
     }
     
