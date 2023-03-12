@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class MainPlayScreenHUD : IntEventInvoker
 {
@@ -19,7 +20,7 @@ public class MainPlayScreenHUD : IntEventInvoker
         // create and start game timer
         gameTimer = gameObject.AddComponent<Timer>();
         //gameTimer.AddTimerFinishedEventListener(HandleGameTimerFinishedEvent);
-        gameTimer.Duration = 30;
+        gameTimer.Duration = 60;
         gameTimer.Run();
 
         // add self as timer changed event invoker

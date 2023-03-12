@@ -23,12 +23,14 @@ public class HUD : MonoBehaviour
 	[SerializeField]
 	Text timerText;
 
-	#endregion
+	GameObject player;
+	Character character;
+    #endregion
 
-	/// <summary>
-	/// Start is called before the first frame update
-	/// </summary>
-	void Start()
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    void Start()
     {
 		// add listener for PointsAddedEvent
 		//EventManager.AddListener(EventName.PointsAddedEvent, HandlePointsAddedEvent);
@@ -37,12 +39,26 @@ public class HUD : MonoBehaviour
 		scoreText.text = "Score: " + score;
 
 		// add listener for HealthChangedEvent
-		//EventManager.AddListener(EventName.HealthChangedEvent, HandleHealthChangedEvent);
+		EventManager.AddListener(EventName.HealthChangedEvent, HandleHealthChangedEvent);
 
 		// add listener for TimerChangedEvent and initialize timer text
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
-		timerText.text = "30";
-	}
+		timerText.text = "60";
+
+      
+        player = CharacterSelect.selectedCharater;
+		if (player.name == "HeroGun")
+		{
+            character = new HeroGun(player);
+            healthBar.maxValue = character.health;
+		}
+        if (player.name == "HeroSword")
+        {
+            character = new HeroSword(player);
+            healthBar.maxValue = character.health;
+        }
+
+    }
 
 	#region Properties
 
