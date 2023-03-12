@@ -19,6 +19,12 @@ public class Bullet : MonoBehaviour
     {
         //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         //Destroy(effect, 2f);
+
+        if(collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
+        {
+            enermyComponent.TakeDamage(15);
+        }
+
         Destroy(gameObject);
     }
 }

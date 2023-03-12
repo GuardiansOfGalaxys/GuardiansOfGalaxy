@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 145373385}
   - component: {fileID: 145373384}
   - component: {fileID: 145373383}
+  - component: {fileID: 145373386}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -235,6 +236,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1 &202585808
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,12 +272,7 @@ MonoBehaviour:
   scoreText: {fileID: 1490236859}
   healthBar: {fileID: 676154572}
   timerText: {fileID: 1099042782}
---- !u!114 &202585810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+
   m_GameObject: {fileID: 202585808}
   m_Enabled: 1
   m_EditorHideFlags: 0
