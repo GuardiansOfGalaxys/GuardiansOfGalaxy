@@ -36,9 +36,9 @@ public class Enermy : MonoBehaviour
             //default:
             //    currentSpeed = speedLv1;
             //    currentHealth = maxHealthLv1;
-            //    break;
+                //break;
         }
-        //Debug.Log(gameObject.name + "health: " + currentHealth);
+        Debug.Log(gameObject.name + "health: " + currentHealth);
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class Enermy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
