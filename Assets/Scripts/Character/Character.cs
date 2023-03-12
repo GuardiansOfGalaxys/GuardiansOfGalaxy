@@ -82,5 +82,15 @@ public class Character
         }
     }
 
+    public void Heal()
+    {
+        this.health = (int) (this.health * (Const.Item.Heal.healBuff + 1));
+    }
+
+    public void Ghost()
+    {
+        this.speed = (int) (this.speed * (Const.Item.Ghost.speedBuff + 1));
+    }
+
 
 }

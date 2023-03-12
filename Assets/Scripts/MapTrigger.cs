@@ -8,9 +8,9 @@ public class MapTrigger : MonoBehaviour
     public List<Transform> listTargetRight;
     public List<Transform> listTargetTop;
     public List<Transform> listTargetBottom;
-    readonly float xOffset = (float)EnumScript.Map.x;
-    readonly float yOffset = (float)EnumScript.Map.y;
-    readonly float moveMapSpeed = (float)EnumScript.Map.moveSpeed;
+    readonly float xOffset = (float)Const.Map.x;
+    readonly float yOffset = (float)Const.Map.y;
+    readonly float moveMapSpeed = (float)Const.Map.moveSpeed;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
