@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1618654605815764661}
   m_Layer: 0
   m_Name: EnermyLv3
-  m_TagString: Untagged
+  m_TagString: Enemy3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,9 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688a76e4e4ad9254499c30d1c11b9567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  health: 0
-  maxHealth: 3
 --- !u!61 &1618654605815764661
 BoxCollider2D:
   m_ObjectHideFlags: 0

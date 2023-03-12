@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Bullet : MonoBehaviour
 {
-    Character player;
+    GameObject player;
+    Character character;
 
     public GameObject hitEffect;
     //// Start is called before the first frame update
@@ -22,7 +24,20 @@ public class Bullet : MonoBehaviour
 
         if(collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
         {
-            enermyComponent.TakeDamage(15);
+            player = CharacterSelect.selectedCharater;
+            if (player.name == "HeroGun")
+            {
+                character = new HeroGun(player);
+                enermyComponent.TakeDamage(character.damage);
+                Debug.Log(character.damage);
+            }
+            if (player.name == "HeroSword")
+            {
+                character = new HeroSword(player);
+                enermyComponent.TakeDamage(character.damage);
+                Debug.Log(character.damage);
+            }
+            
         }
 
         Destroy(gameObject);

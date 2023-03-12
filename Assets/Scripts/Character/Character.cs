@@ -20,6 +20,8 @@ public class Character : IntEventInvoker
 
     public Camera camera { get; set; }
 
+    private float currentSpeed;
+
     private Vector2 axisMovement;
     private Vector2 mousePos;
 
@@ -90,10 +92,41 @@ public class Character : IntEventInvoker
     }
 
     /// <summary>
-    /// Reduces health by the given amount of damage
+    /// Processes trigger collisions with other game objects
     /// </summary>
-    /// <param name="damage">damage</param>
-    void TakeDamage(int damage)
+    /// <param name="other">information about the other collider</param>
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        // if (other.gameObject.CompareTag("Enemy1"))
+        //{
+        //    Debug.Log("1");
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv1.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+        //if (other.gameObject.CompareTag("Enemy2"))
+        //{
+        //    Debug.Log(other.gameObject.CompareTag("Enemy1"));
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv2.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+        //if (other.gameObject.CompareTag("Enemy3"))
+        //{
+        //    Debug.Log(other.gameObject.CompareTag("Enemy1"));
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv3.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+
+    }
+
+            /// <summary>
+            /// Reduces health by the given amount of damage
+            /// </summary>
+            /// <param name="damage">damage</param>
+            void TakeDamage(int damage)
     {
         health = Mathf.Max(0, health - damage);
         Debug.Log(health);
