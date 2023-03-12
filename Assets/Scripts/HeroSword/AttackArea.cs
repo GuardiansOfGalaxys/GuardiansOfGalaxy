@@ -13,5 +13,10 @@ public class AttackArea : MonoBehaviour
             Health health = collision.GetComponent<Health>();
             health.Damage(damage);
         }
+
+        if (collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
+        {
+            enermyComponent.TakeDamage(damage);
+        }
     }
 }
