@@ -25,6 +25,8 @@ public class HUD : MonoBehaviour
 
 	GameObject player;
 	Character character;
+
+	private int currentHealth;
     #endregion
 
     /// <summary>
@@ -38,8 +40,6 @@ public class HUD : MonoBehaviour
 		// initialize score text
 		scoreText.text = "Score: " + score;
 
-		// add listener for HealthChangedEvent
-		EventManager.AddListener(EventName.HealthChangedEvent, HandleHealthChangedEvent);
 
 		// add listener for TimerChangedEvent and initialize timer text
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
@@ -58,6 +58,7 @@ public class HUD : MonoBehaviour
             healthBar.maxValue = character.health;
         }
 
+        currentHealth = (int) healthBar.maxValue;
     }
 
 	#region Properties
@@ -90,9 +91,16 @@ public class HUD : MonoBehaviour
 	/// the health bar value
 	/// </summary>
 	/// <param name="value">health value</param>
-	void HandleHealthChangedEvent(int value)
+	public void HandleHealthChangedEvent(int value)
     {
-		healthBar.value = value;
+		
+        healthBar.value = currentHealth - value;
+		currentHealth = (int) healthBar.value;
+        if (healthBar.value == 0)
+		{
+            Destroy(player);
+        }
+		
 	}
 
 	/// <summary>

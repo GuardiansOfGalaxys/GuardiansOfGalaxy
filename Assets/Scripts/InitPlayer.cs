@@ -19,19 +19,11 @@ public class InitPlayer : MonoBehaviour
         switch (selectedCharater.name)
         {
             case "HeroSword":
-                player = new HeroSword(playerObject);
-                Debug.Log(player.health);
-                Debug.Log(player.damage);
-                Debug.Log(player.speed);
-                Debug.Log(player.speedAttack);              
+                player = new HeroSword(playerObject);        
                 player.camera = camera;
                 break;
             case "HeroGun":
                 player = new HeroGun(playerObject);
-                Debug.Log(player.health);
-                Debug.Log(player.damage);
-                Debug.Log(player.speed);
-                Debug.Log(player.speedAttack);
                 player.camera = camera;
                 break;
         }
