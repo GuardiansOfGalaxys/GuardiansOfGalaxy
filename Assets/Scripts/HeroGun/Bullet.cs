@@ -5,41 +5,42 @@ using UnityEngine.TextCore.Text;
 
 public class Bullet : MonoBehaviour
 {
+    public float speed;
+
+    public Rigidbody2D rb;
     GameObject player;
     Character character;
 
-    public GameObject hitEffect;
     //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * player.speedAttack;
-
-    //    Destroy(gameObject, 2);
-    //}
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void start()
     {
-        //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        //Destroy(effect, 2f);
-
-        if(collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
+        player = CharacterSelect.selectedCharater;
+        if (player.name == "HeroGun")
         {
-            player = CharacterSelect.selectedCharater;
-            if (player.name == "HeroGun")
+            character = new HeroGun(player);
+            speed = character.speedAttack;
+        }
+        rb.velocity = transform.right * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
+        {
+            if (collision.name == "EnermyLv1(Clone)" || collision.name == "EnermyLv2(Clone)" || collision.name == "EnermyLv3(Clone)")
             {
-                character = new HeroGun(player);
-                enermyComponent.TakeDamage(character.damage);
-                Debug.Log(character.damage);
+
+                player = CharacterSelect.selectedCharater;
+                if (player.name == "HeroGun")
+                {
+                    character = new HeroGun(player);
+                    enermyComponent.TakeDamage(character.damage);
+                    Destroy(gameObject);
+                }
+
             }
-            if (player.name == "HeroSword")
-            {
-                character = new HeroSword(player);
-                enermyComponent.TakeDamage(character.damage);
-                Debug.Log(character.damage);
-            }
-            
+
         }
 
-        Destroy(gameObject);
     }
 }
