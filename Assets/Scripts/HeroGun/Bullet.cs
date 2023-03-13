@@ -5,7 +5,8 @@ using UnityEngine.TextCore.Text;
 
 public class Bullet : MonoBehaviour
 {
-    public float speedAttack;
+    public float speed;
+
     public Rigidbody2D rb;
     GameObject player;
     Character character;
@@ -17,9 +18,9 @@ public class Bullet : MonoBehaviour
         if (player.name == "HeroGun")
         {
             character = new HeroGun(player);
-            speedAttack = character.speedAttack;
+            speed = character.speedAttack;
         }
-        rb.velocity = transform.right * speedAttack;
+        rb.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
