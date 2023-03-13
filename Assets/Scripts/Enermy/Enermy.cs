@@ -16,6 +16,12 @@ public class Enermy : MonoBehaviour
 
     private Transform target;
     private float distance;
+    private int currentAttack;
+
+    Character character;
+
+    public HUD hub;
+    public int damageEnemy;
 
 
     // Start is called before the first frame update
@@ -46,6 +52,8 @@ public class Enermy : MonoBehaviour
                 break;
             
         }
+
+        hub = FindObjectOfType<HUD>();
         //Debug.Log(gameObject.name + "health: " + currentHealth);
     }
 
@@ -61,7 +69,7 @@ public class Enermy : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(this.transform.position, target.position, currentSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-
+        
         // check round
         //UpdateEnemy();
     }
@@ -89,12 +97,38 @@ public class Enermy : MonoBehaviour
     //    } 
     //}
 
+    public void TakeDamageInPlayer(int damage)
+    {
+        hub.HandleHealthChangedEvent(damage);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+                Debug.Log(gameObject.name);
+                if (gameObject.name == "EnermyLv1(Clone)")
+                {
+                    currentAttack = CurrentEnemy.Enemy.EnemyLv1.attack;
+                    TakeDamageInPlayer(currentAttack);
+                    Destroy(gameObject);
+                }
+                else if (gameObject.name == "EnermyLv2(Clone)")
+                {
+                    currentAttack = CurrentEnemy.Enemy.EnemyLv2.attack;
+                    TakeDamageInPlayer(currentAttack);
+                    Destroy(gameObject);
+                }
+                else if (gameObject.name == "EnermyLv3(Clone)")
+                {
+                    currentAttack = CurrentEnemy.Enemy.EnemyLv3.attack;
+                    TakeDamageInPlayer(currentAttack);
+                    Destroy(gameObject);
+                }    
+
         }
 
     }
+
+
 }
