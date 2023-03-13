@@ -27,25 +27,26 @@ public class SpawnEnermy : MonoBehaviour
     [SerializeField]
     public GameObject enemyLv3Prefab;
     public bool isPlay = false;
-
+    private Camera mainCamera;
     TimerEnermySpawn timerES;
 
     public static List<EnermyS> lstEnermy = new List<EnermyS>();
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
         timerES = gameObject.AddComponent<TimerEnermySpawn>();
-        timerES.Duration = 0.2f;
+        timerES.Duration = 2f;
         timerES.Run();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerES.Finished) //&& isPlay == true)
+        if (timerES.Finished) 
         {
             SpawnObject();
-            timerES.Duration = 0.2f;
+            timerES.Duration = 2f;
             timerES.Run();
         }
     }
@@ -53,37 +54,29 @@ public class SpawnEnermy : MonoBehaviour
     private void SpawnObject()
     {
         GameObject a;
+        Vector3 randomPosition = mainCamera.ViewportToWorldPoint(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 0));
+
         int random = Random.Range(0, 10);
 
         if (random >= 0 && random <= 4)
         {
-            a = Instantiate(enemyLv1Prefab, Gennerate(), Quaternion.identity);
+            a = Instantiate(enemyLv1Prefab, randomPosition, Quaternion.identity);
             // lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 1));
 
         }
         else if (random >= 5 && random <= 7)
         {
-            a = Instantiate(enemyLv2Prefab, Gennerate(), Quaternion.identity);
+            a = Instantiate(enemyLv2Prefab, randomPosition, Quaternion.identity);
             // lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 2));
         }
         else
         {
-            a = Instantiate(enemyLv3Prefab, Gennerate(), Quaternion.identity);
+            a = Instantiate(enemyLv3Prefab, randomPosition, Quaternion.identity);
             //lstEnermy.Add(new EnermyS(a.transform.position.x, a.transform.position.y, 0, 3));
 
         }
-        Debug.Log(random);
+        //Debug.Log(random);
+        
     }
-    Vector3 Gennerate()
-    {
-        Camera mainCamera = Camera.main;
-
-        float cameraHeight = 2f * mainCamera.orthographicSize;
-        float cameraWidth = cameraHeight * mainCamera.aspect;
-
-        float xRange = cameraWidth / 2f;
-        float yRange = cameraHeight / 2f;
-
-        return new Vector3(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange), 0);
-    }
+    
 }

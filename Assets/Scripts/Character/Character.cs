@@ -2,7 +2,7 @@ using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class Character
+public class Character : IntEventInvoker
 {
     public int health { get; set; }
     public float speed { get; set; }
@@ -20,14 +20,23 @@ public class Character
 
     public Camera camera { get; set; }
 
+    private float currentSpeed;
+
     private Vector2 axisMovement;
     private Vector2 mousePos;
 
-    public Character(GameObject gameObject)
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    void Start()
     {
-        health = 10;
-        damage = 10;
-        speedAttack = 0;
+        unityEvents.Add(EventName.HealthChangedEvent, new HealthChangedEvent());
+        EventManager.AddInvoker(EventName.HealthChangedEvent, this);
+        unityEvents.Add(EventName.GameOverEvent, new GameOverEvent());
+        EventManager.AddInvoker(EventName.GameOverEvent, this);
+    }
+        public Character(GameObject gameObject)
+    {
         body = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
@@ -82,5 +91,50 @@ public class Character
         }
     }
 
+    /// <summary>
+    /// Processes trigger collisions with other game objects
+    /// </summary>
+    /// <param name="other">information about the other collider</param>
+    void OnTriggerEnter2D(Collider2D other)
+    {
 
+        // if (other.gameObject.CompareTag("Enemy1"))
+        //{
+        //    Debug.Log("1");
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv1.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+        //if (other.gameObject.CompareTag("Enemy2"))
+        //{
+        //    Debug.Log(other.gameObject.CompareTag("Enemy1"));
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv2.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+        //if (other.gameObject.CompareTag("Enemy3"))
+        //{
+        //    Debug.Log(other.gameObject.CompareTag("Enemy1"));
+        //    currentSpeed = CurrentEnemy.Enemy.EnemyLv3.attack;
+        //    TakeDamage((int)currentSpeed);
+        //    Destroy(other.gameObject);
+        //}
+
+    }
+
+            /// <summary>
+            /// Reduces health by the given amount of damage
+            /// </summary>
+            /// <param name="damage">damage</param>
+            void TakeDamage(int damage)
+    {
+        health = Mathf.Max(0, health - damage);
+        Debug.Log(health);
+        unityEvents[EventName.HealthChangedEvent].Invoke(health);
+        // check for game over
+        if (health == 0)
+        {
+            unityEvents[EventName.GameOverEvent].Invoke(0);
+        }
+    }
 }
