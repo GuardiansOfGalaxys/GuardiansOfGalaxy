@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Enermy : MonoBehaviour
+public class Enermy : IntEventInvoker
 {
 
     private float currentSpeed;
@@ -17,6 +17,8 @@ public class Enermy : MonoBehaviour
     private Transform target;
     private float distance;
     private int currentAttack;
+
+    public int enemyPoints;
 
     Character character;
 
@@ -55,6 +57,10 @@ public class Enermy : MonoBehaviour
 
         hub = FindObjectOfType<HUD>();
         //Debug.Log(gameObject.name + "health: " + currentHealth);
+
+        // add as invoker for PointsAddedEvent
+        unityEvents.Add(EventName.PointsAddedEvent, new PointsAddedEvent());
+        EventManager.AddInvoker(EventName.PointsAddedEvent, this);
     }
 
     // Update is called once per frame
@@ -78,6 +84,20 @@ public class Enermy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            switch (gameObject.name)
+            {
+                case "EnermyLv1(Clone)":
+                    enemyPoints = 1;
+                    break;
+                case "EnermyLv2(Clone)":
+                    enemyPoints = 2;
+                    break;
+                case "EnermyLv3(Clone)":
+                    enemyPoints = 3;
+                    break;
+
+            }
+            unityEvents[EventName.PointsAddedEvent].Invoke(enemyPoints);
             Destroy(gameObject);
         }
     }
