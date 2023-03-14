@@ -5,8 +5,12 @@ using UnityEngine;
 public class Character : IntEventInvoker
 {
     public int health { get; set; }
+    public int currentHealth;
     public float speed { get; set; }
+    public float oldSpeed { get; set; }
     public float damage { get; set; }
+    public float ghostEffectRemaining { get; set; }
+    public float shieldEffectRemaining { get; set; }
 
     public float speedAttack { get; set; }
 
@@ -20,14 +24,9 @@ public class Character : IntEventInvoker
 
     public Camera camera { get; set; }
 
-    private float currentSpeed;
-
     private Vector2 axisMovement;
     private Vector2 mousePos;
 
-    /// <summary>
-    /// Start is called before the first frame update
-    /// </summary>
     void Start()
     {
         unityEvents.Add(EventName.HealthChangedEvent, new HealthChangedEvent());
@@ -48,6 +47,8 @@ public class Character : IntEventInvoker
     {
         InputHandle();
         FixedUpdate();
+        ControlGhostEffectRemaining();
+
     }
 
     private void InputHandle()
@@ -89,9 +90,30 @@ public class Character : IntEventInvoker
         }
     }
 
-    /// <summary>
-    /// Reduces health by the given amount of damage
-    /// </summary>
-    /// <param name="damage">damage</param>
+    public void Heal()
+    {
+        Debug.Log("health: " + this.currentHealth);
+        this.currentHealth = (this.currentHealth + this.health * Const.Item.Heal.healBuff) > this.health ? this.health
+            : (int)(this.currentHealth + this.health * Const.Item.Heal.healBuff);
+        Debug.Log("health: " + this.currentHealth);
+    }
+
+    public void Ghost()
+    {
+        this.speed *= Const.Item.Ghost.speedBuff + 1;
+        this.ghostEffectRemaining = Const.Item.Ghost.existenceTimeOnPlayer;
+    }
+
+    private void ControlGhostEffectRemaining()
+    {
+        if (this.ghostEffectRemaining > 0)
+        {
+            this.ghostEffectRemaining -= Time.deltaTime;
+            if (this.ghostEffectRemaining <= 0)
+            {
+                this.speed = this.oldSpeed;
+            }
+        }
+    }
 
 }

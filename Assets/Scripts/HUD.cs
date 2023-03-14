@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// The HUD for the game
 /// </summary>
-public class HUD : MonoBehaviour
+public class HUD : PlayerController
 {
 	#region Fields
 
@@ -23,10 +23,10 @@ public class HUD : MonoBehaviour
 	[SerializeField]
 	Text timerText;
 
-	GameObject player;
+	//GameObject player;
 	Character character;
 
-	private int currentHealth;
+	
     #endregion
 
     /// <summary>
@@ -45,8 +45,11 @@ public class HUD : MonoBehaviour
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
 		timerText.text = "60";
 
-      
-        player = CharacterSelect.selectedCharater;
+		character = player;
+		Debug.Log(player);
+		healthBar.maxValue = character.health;
+
+		/*player = CharacterSelect.selectedCharater;
 		if (player.name == "HeroGun")
 		{
             character = new HeroGun(player);
@@ -56,18 +59,18 @@ public class HUD : MonoBehaviour
         {
             character = new HeroSword(player);
             healthBar.maxValue = character.health;
-        }
+        }*/
 
-        currentHealth = (int) healthBar.maxValue;
+		//character.currentHealth = (int) healthBar.maxValue;
     }
 
-	#region Properties
+    #region Properties
 
-	/// <summary>
-	/// Gets the score
-	/// </summary>
-	/// <value>the score</value>
-	public int Score
+    /// <summary>
+    /// Gets the score
+    /// </summary>
+    /// <value>the score</value>
+    public int Score
     {
 		get { return score; }
 	}
@@ -94,8 +97,9 @@ public class HUD : MonoBehaviour
 	public void HandleHealthChangedEvent(int value)
     {
 		
-        healthBar.value = currentHealth - value;
-		currentHealth = (int) healthBar.value;
+        healthBar.value = character.currentHealth - value;
+		character.currentHealth = (int) healthBar.value;
+		Debug.Log(character.currentHealth);
         if (healthBar.value == 0)
 		{
             Destroy(player);

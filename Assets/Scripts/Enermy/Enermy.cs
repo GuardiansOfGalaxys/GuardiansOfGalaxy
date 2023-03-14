@@ -144,8 +144,7 @@ public class Enermy : IntEventInvoker
                     currentAttack = CurrentEnemy.Enemy.EnemyLv3.attack;
                     TakeDamageInPlayer(currentAttack);
                     Destroy(gameObject);
-                }    
-
+                }
         }
 
     }
