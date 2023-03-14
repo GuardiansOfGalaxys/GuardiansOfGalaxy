@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -22,6 +24,9 @@ public class HUD : MonoBehaviour
 	// timer support
 	[SerializeField]
 	Text timerText;
+
+	[SerializeField]
+	GameObject pauseMenu;
 
 	GameObject player;
 	Character character;
@@ -111,6 +116,25 @@ public class HUD : MonoBehaviour
     {
 		timerText.text = value.ToString();
 	}
-		
-	#endregion
+
+    #endregion
+
+	public void Pause()
+	{
+		pauseMenu.SetActive(true);
+		Time.timeScale = 0f;
+	}
+
+	public void Resume()
+	{
+		pauseMenu.SetActive(false);
+		Time.timeScale = 1f;
+	}
+
+	public void Home(int sceneID)
+	{
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(sceneID);
+	}
+
 }

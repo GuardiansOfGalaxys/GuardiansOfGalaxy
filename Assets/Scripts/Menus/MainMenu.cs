@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
     public void HandlePlayButtonOnClickEvent()
     {
         SceneManager.LoadScene("WeaponChoose");
+        Debug.Log("test");
     }
 
     public void HandleQuitButtonOnClickEvent()

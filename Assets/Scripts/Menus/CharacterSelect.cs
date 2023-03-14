@@ -21,7 +21,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void OnPlayBtnClick()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("GamePlay");
     }
 
     public void OnPreBtnClick()
