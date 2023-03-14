@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     public float existenceTime { get; set; }
 
-    public Item(GameObject objectItem)
+    public Item()
     {
         this.existenceTime = 0f;
     }
@@ -19,15 +19,5 @@ public class Item : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log(gameObject.name);
-            Destroy(gameObject);
-        }
-    }
-
 
 }

@@ -5,8 +5,12 @@ using UnityEngine;
 public class Character
 {
     public int health { get; set; }
+    public int currentHealth { get; set; }
     public float speed { get; set; }
+    public float oldSpeed { get; set; }
     public float damage { get; set; }
+    public float ghostEffectRemaining { get; set; }
+    public float shieldEffectRemaining { get; set; }
 
     public float speedAttack { get; set; }
 
@@ -39,7 +43,7 @@ public class Character
     {
         InputHandle();
         FixedUpdate();
-
+        ControlGhostEffectRemaining();
        
     }
 
@@ -84,13 +88,26 @@ public class Character
 
     public void Heal()
     {
-        this.health = (int) (this.health * (Const.Item.Heal.healBuff + 1));
+        this.currentHealth = (this.currentHealth + this.health * Const.Item.Heal.healBuff) > this.health ? this.health
+            : (int)(this.currentHealth + this.health * Const.Item.Heal.healBuff);
     }
 
     public void Ghost()
     {
-        this.speed = (int) (this.speed * (Const.Item.Ghost.speedBuff + 1));
+        this.speed *= Const.Item.Ghost.speedBuff + 1;
+        this.ghostEffectRemaining = Const.Item.Ghost.existenceTimeOnPlayer;
     }
-
+    
+    private void ControlGhostEffectRemaining()
+    {
+        if (this.ghostEffectRemaining > 0)
+        {
+            this.ghostEffectRemaining -= Time.deltaTime;
+            if (this.ghostEffectRemaining <= 0)
+            {
+                this.speed = this.oldSpeed;
+            }
+        }
+    }
 
 }

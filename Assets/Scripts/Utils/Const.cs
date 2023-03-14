@@ -16,20 +16,16 @@ public class Const : MonoBehaviour
     {
         public static class Heal
         {
-            public static readonly float existenceTimeOnPlayer = 5f;
-            public static readonly float spawnRate = 0.3f;
+            public static readonly string name = "Heal";
+           // public static readonly float spawnRate = 0.5f;
             public static readonly float healBuff = 0.3f;
         }
         public static class Ghost
         {
+            public static readonly string name = "Ghost";
             public static readonly float existenceTimeOnPlayer = 5f;
-            public static readonly float spawnRate = 0.3f;
+            //public static readonly float spawnRate = 0.5f;
             public static readonly float speedBuff = 0.3f;
-        }
-        public static class Shield
-        {
-            public static readonly float existenceTimeOnPlayer = 5f;
-            public static readonly float spawnRate = 0.3f;
         }
     }
 }
