@@ -9,5 +9,6 @@ public class HeroSword : Character
         damage = 12;
         speed = 3;
         speedAttack = 1f;
+        Debug.Log("he:" + health + " dama:"+ damage+" speed:" + speed+ " speedAttack"+ speedAttack);
     }
 }
