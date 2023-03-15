@@ -11,5 +11,6 @@ public class HeroSword : Character
         speed = 3;
         oldSpeed = speed;
         speedAttack = 1f;
+        Debug.Log("he:" + health + " dama:"+ damage+" speed:" + speed+ " speedAttack"+ speedAttack);
     }
 }

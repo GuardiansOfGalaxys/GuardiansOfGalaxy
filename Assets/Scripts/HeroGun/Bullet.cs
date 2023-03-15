@@ -1,24 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Bullet : MonoBehaviour
 {
-    Character player;
+    public float speed;
 
-    public GameObject hitEffect;
+    public Rigidbody2D rb;
+    GameObject player;
+    Character character;
+
     //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * player.speedAttack;
-
-    //    Destroy(gameObject, 2);
-    //}
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void start()
     {
-        //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        //Destroy(effect, 2f);
-        Destroy(gameObject);
+        player = CharacterSelect.selectedCharater;
+        if (player.name == "HeroGun")
+        {
+            character = new HeroGun(player);
+            speed = character.speedAttack;
+        }
+        rb.velocity = transform.right * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Enermy>(out Enermy enermyComponent))
+        {
+            if (collision.name == "EnermyLv1(Clone)" || collision.name == "EnermyLv2(Clone)" || collision.name == "EnermyLv3(Clone)")
+            {
+
+                player = CharacterSelect.selectedCharater;
+                if (player.name == "HeroGun")
+                {
+                    character = new HeroGun(player);
+                    enermyComponent.TakeDamage(character.damage);
+                    Destroy(gameObject);
+                }
+
+            }
+
+        }
+
     }
 }

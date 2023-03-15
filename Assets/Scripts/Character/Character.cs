@@ -2,7 +2,7 @@ using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class Character
+public class Character : IntEventInvoker
 {
     public int health { get; set; }
     public int currentHealth { get; set; }
@@ -24,14 +24,23 @@ public class Character
 
     public Camera camera { get; set; }
 
+    private float currentSpeed;
+
     private Vector2 axisMovement;
     private Vector2 mousePos;
 
-    public Character(GameObject gameObject)
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    void Start()
     {
-        health = 10;
-        damage = 10;
-        speedAttack = 0;
+        unityEvents.Add(EventName.HealthChangedEvent, new HealthChangedEvent());
+        EventManager.AddInvoker(EventName.HealthChangedEvent, this);
+        unityEvents.Add(EventName.GameOverEvent, new GameOverEvent());
+        EventManager.AddInvoker(EventName.GameOverEvent, this);
+    }
+        public Character(GameObject gameObject)
+    {
         body = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
@@ -97,7 +106,7 @@ public class Character
         this.speed *= Const.Item.Ghost.speedBuff + 1;
         this.ghostEffectRemaining = Const.Item.Ghost.existenceTimeOnPlayer;
     }
-    
+
     private void ControlGhostEffectRemaining()
     {
         if (this.ghostEffectRemaining > 0)
@@ -109,5 +118,9 @@ public class Character
             }
         }
     }
+    /// <summary>
+    /// Reduces health by the given amount of damage
+    /// </summary>
+    /// <param name="damage">damage</param>
 
 }

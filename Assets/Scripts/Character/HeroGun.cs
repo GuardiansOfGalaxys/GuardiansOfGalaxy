@@ -11,6 +11,7 @@ public class HeroGun : Character
         speed = 6;
         oldSpeed = speed;
         speedAttack = 0.75f;
+        //Debug.Log("he:" + health + " dama:" + damage + " speed:" + speed + " speedAttack" + speedAttack);
     }
 }
 
