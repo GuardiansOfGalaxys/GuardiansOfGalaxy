@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
             {
                 player.Ghost();
             }
-            
+            ItemSpawn.items.Remove(collision.gameObject);
             Destroy(collision.gameObject);
         }
     }

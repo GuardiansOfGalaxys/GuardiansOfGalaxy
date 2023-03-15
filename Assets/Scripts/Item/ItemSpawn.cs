@@ -11,6 +11,7 @@ public class ItemSpawn : MonoBehaviour
     private Dictionary<GameObject, float> dictionaryGameObjectAndRate;
     public List<GameObject> gameObjects;
     public List<float> rates;
+    public static List<GameObject> items;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class ItemSpawn : MonoBehaviour
         {
             GameObject newObject =  ObjectUtilScript.SpawnObjects(dictionaryGameObjectAndRate, spawnPos);
             newObject.AddComponent<Item>();
+            items.Add(newObject);
             spawnTime = 0f;
         }
     }
