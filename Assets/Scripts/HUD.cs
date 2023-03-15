@@ -37,7 +37,7 @@ public class HUD : MonoBehaviour
     void Start()
     {
 		// add listener for PointsAddedEvent
-		//EventManager.AddListener(EventName.PointsAddedEvent, HandlePointsAddedEvent);
+		EventManager.AddListener(EventName.PointsAddedEvent, HandlePointsAddedEvent);
 
 		// initialize score text
 		scoreText.text = "Score: " + score;
