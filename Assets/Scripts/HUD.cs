@@ -25,9 +25,6 @@ public class HUD : MonoBehaviour
 	[SerializeField]
 	Text timerText;
 
-	[SerializeField]
-	GameObject pauseMenu;
-
 	GameObject player;
 	Character character;
 
@@ -118,23 +115,4 @@ public class HUD : MonoBehaviour
 	}
 
     #endregion
-
-	public void Pause()
-	{
-		pauseMenu.SetActive(true);
-		Time.timeScale = 0f;
-	}
-
-	public void Resume()
-	{
-		pauseMenu.SetActive(false);
-		Time.timeScale = 1f;
-	}
-
-	public void Home(int sceneID)
-	{
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(sceneID);
-	}
-
 }
