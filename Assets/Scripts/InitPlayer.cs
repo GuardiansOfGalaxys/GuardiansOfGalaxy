@@ -40,7 +40,7 @@ public class InitPlayer : MonoBehaviour
             if (timerStarted)
             {
                 timer += Time.deltaTime;
-                if (timer >= 5f)
+                if (timer >= 60f)
                 {
                     // Increase HP, attack, and speed by 10%
                     player.health += 3;
@@ -52,8 +52,8 @@ public class InitPlayer : MonoBehaviour
                     timer = 0f;
                     StopTimer();
                 }
-                Debug.Log("H: " + player.health + " D: "+ player.damage + " S: "+ player.speed + " SA: "+ player.speedAttack);
-                Debug.Log("timerStarted:" + timerStarted + " timer: " + timer);
+                //Debug.Log("H: " + player.health + " D: "+ player.damage + " S: "+ player.speed + " SA: "+ player.speedAttack);
+                //Debug.Log("timerStarted:" + timerStarted + " timer: " + timer);
             }
         }
     }
