@@ -5,22 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/WeaponChoose.unity
     guid: 665f3e7f68249be4e959a51e033e5d7e
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: a58a4474940184d4a938b402ccc8fd4a
   - enabled: 1
-    path: Assets/Scenes/EndGame.unity
-    guid: 2f0ce927580bf5d4c89fd876d4de0648
-  - enabled: 1
-    path: Assets/Scenes/HighScore.unity
-    guid: d8f04721ef5d18143a8ff761d6e3a677
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 7b235d6236b861b4695771bb31a333d0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

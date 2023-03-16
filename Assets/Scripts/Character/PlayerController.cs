@@ -16,4 +16,21 @@ public class PlayerController : MonoBehaviour
     {
         player.Update();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            if (collision.name.Contains(Const.Item.Heal.name))
+            {
+                player.Heal();
+            }
+            if (collision.name.Contains(Const.Item.Ghost.name))
+            {
+                player.Ghost();
+            }
+            
+            Destroy(collision.gameObject);
+        }
+    }
 }
