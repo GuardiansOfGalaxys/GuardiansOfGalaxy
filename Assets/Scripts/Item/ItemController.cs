@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ItemSpawn : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
     float spawnTime;
     public new Camera camera;
@@ -22,16 +22,15 @@ public class ItemSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTime += Time.deltaTime;
-        Vector3 spawnPos = camera.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0));
-        spawnPos.z = 0f;
-        if(spawnTime >= 10f)
-        {
-            GameObject newObject =  ObjectUtilScript.SpawnObjects(dictionaryGameObjectAndRate, spawnPos);
-            newObject.AddComponent<Item>();
-            items.Add(newObject);
-            spawnTime = 0f;
-        }
+        
+    }
+
+    public void spawnItem(Vector3 spawnPos)
+    {
+        GameObject newObject = ObjectUtilScript.SpawnObjects(dictionaryGameObjectAndRate, spawnPos);
+        Debug.Log(newObject);
+        //items.Add(newObject);
+        spawnTime = 0f;
     }
 
     
