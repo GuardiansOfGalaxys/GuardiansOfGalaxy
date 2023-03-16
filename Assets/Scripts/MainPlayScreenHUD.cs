@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainPlayScreenHUD : IntEventInvoker
 {
@@ -11,7 +12,7 @@ public class MainPlayScreenHUD : IntEventInvoker
     // high score menu support
     [SerializeField]
     GameObject hud;
-
+    
     /// <summary>
     /// Awake is called before Start
     /// </summary>
