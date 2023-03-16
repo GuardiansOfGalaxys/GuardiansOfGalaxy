@@ -23,6 +23,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("WeaponChoose");
     }
 
+    /// <summary>
+	/// Handles the on click event from the high score button
+	/// </summary>
+	public void HandleHighScoreButtonOnClickEvent()
+    {
+        SceneManager.LoadScene("HighScore");
+    }
     public void HandleQuitButtonOnClickEvent()
     {
         Application.Quit();
