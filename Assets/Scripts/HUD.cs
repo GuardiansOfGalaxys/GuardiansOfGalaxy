@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// The HUD for the game
 /// </summary>
-public class HUD : PlayerController
+public class HUD : MonoBehaviour
 {
 	#region Fields
 
@@ -17,16 +17,13 @@ public class HUD : PlayerController
 
 	// health support
 	[SerializeField]
-	Slider healthBar;
+	public Slider healthBar;
 
 	// timer support
 	[SerializeField]
 	Text timerText;
 
-	//GameObject player;
-	Character character;
-
-	
+	public Character player;
     #endregion
 
     /// <summary>
@@ -45,32 +42,15 @@ public class HUD : PlayerController
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
 		timerText.text = "60";
 
-		character = player;
-		Debug.Log(player);
-		healthBar.maxValue = character.health;
+	}
 
-		/*player = CharacterSelect.selectedCharater;
-		if (player.name == "HeroGun")
-		{
-            character = new HeroGun(player);
-            healthBar.maxValue = character.health;
-		}
-        if (player.name == "HeroSword")
-        {
-            character = new HeroSword(player);
-            healthBar.maxValue = character.health;
-        }*/
+	#region Properties
 
-		//character.currentHealth = (int) healthBar.maxValue;
-    }
-
-    #region Properties
-
-    /// <summary>
-    /// Gets the score
-    /// </summary>
-    /// <value>the score</value>
-    public int Score
+	/// <summary>
+	/// Gets the score
+	/// </summary>
+	/// <value>the score</value>
+	public int Score
     {
 		get { return score; }
 	}
@@ -95,16 +75,16 @@ public class HUD : PlayerController
 	/// </summary>
 	/// <param name="value">health value</param>
 	public void HandleHealthChangedEvent(int value)
-    {
-		
-        healthBar.value = character.currentHealth - value;
-		character.currentHealth = (int) healthBar.value;
-		Debug.Log(character.currentHealth);
-        if (healthBar.value == 0)
+	{
+		Debug.Log(player.health);
+
+		healthBar.value = player.currentHealth - value;
+		player.currentHealth = (int)healthBar.value;
+		if (healthBar.value == 0)
 		{
-            Destroy(player);
-        }
-		
+			Destroy(player);
+		}
+		Debug.Log(player.currentHealth);
 	}
 
 	/// <summary>

@@ -126,7 +126,6 @@ public class Enermy : IntEventInvoker
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-                Debug.Log(gameObject.name);
                 if (gameObject.name == "EnermyLv1(Clone)")
                 {
                     currentAttack = CurrentEnemy.Enemy.EnemyLv1.attack;

@@ -1,48 +1,30 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MapTrigger : MonoBehaviour
 {
-    public Transform currentMap;
-    public List<Transform> listTargetLeft;
-    public List<Transform> listTargetRight;
-    public List<Transform> listTargetTop;
-    public List<Transform> listTargetBottom;
-    readonly float xOffset = (float)Const.Map.x;
-    readonly float yOffset = (float)Const.Map.y;
-    readonly float moveMapSpeed = (float)Const.Map.moveSpeed;
+    Character player;
+    MapController mapController;
+    ItemController itemController;
+    bool isMapMoved = true;
+    float spawnItemTime = 0;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void Start()
     {
-        if (collider.CompareTag("MapTrigger"))
-        {
-            MoveMap();
-        }
-
+        player = InitPlayer.player;
+        mapController = player.mapController;
+        itemController = player.itemController;
+        isMapMoved = false;
     }
 
-    private void MoveMap()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector3 newPos;
-        listTargetRight.ForEach(t =>
+        if (collision.CompareTag("Tilemap"))
         {
-            newPos = new Vector3(currentMap.position.x + xOffset, t.position.y, t.position.z);
-            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-        });
-        listTargetLeft.ForEach(t =>
-        {
-            newPos = new Vector3(currentMap.position.x - xOffset, t.position.y, t.position.z);
-            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-        });
-        listTargetBottom.ForEach(t =>
-        {
-            newPos = new Vector3(t.position.x, currentMap.position.y - yOffset, t.position.z);
-            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-        });
-        listTargetTop.ForEach(t =>
-        {
-            newPos = new Vector3(t.position.x, currentMap.position.y + yOffset, t.position.z);
-            t.position = Vector3.Slerp(t.position, newPos, moveMapSpeed * Time.deltaTime);
-        });
+            if (isMapMoved) return;
+            mapController.MoveMap(collision.GetComponent<Tilemap>().gameObject, player.transform.position);
+        }
     }
 }
