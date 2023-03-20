@@ -4,6 +4,7 @@
 public enum AudioClipName
 {
     BurgerShot,
+    SwordFighting,
     Explosion,
     MenuButtonClick,
     PauseGame

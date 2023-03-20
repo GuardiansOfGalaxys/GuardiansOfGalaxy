@@ -37,6 +37,8 @@ public static class AudioManager
             Resources.Load<AudioClip>("ButtonClick"));
         audioClips.Add(AudioClipName.PauseGame,
              Resources.Load<AudioClip>("ButtonClick"));
+        audioClips.Add(AudioClipName.SwordFighting,
+             Resources.Load<AudioClip>("SwordFighting"));
     }
 
     /// <summary>
