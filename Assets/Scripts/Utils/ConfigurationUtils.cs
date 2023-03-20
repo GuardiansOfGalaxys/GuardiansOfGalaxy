@@ -44,53 +44,7 @@ public static class ConfigurationUtils
     {
 		get { return DifficultyUtils.MaxSpawnDelay; }
 	}
-		
-	/// <summary>
-	/// Gets the min impulse force for teddy bears
-	/// </summary>
-	/// <value>minimum impulse force</value>
-	public static float MinImpulseForce
-    {
-		get { return DifficultyUtils.MinImpulseForce; }
-	}
-
-    /// <summary>
-    /// Gets the max impulse force for teddy bears
-    /// </summary>
-    /// <value>maximum impulse force</value>
-    public static float MaxImpulseForce
-    {
-        get { return DifficultyUtils.MaxImpulseForce; }
-    }
-
-
-	/// <summary>
-	/// Gets the amount of damage a teddy bear inflicts
-	/// </summary>
-	/// <value>bear damage</value>
-	public static int BearDamage
-    {
-		get { return 10; }
-	}
-
-	/// <summary>
-	/// Gets the impulse force to apply to french fries
-	/// </summary>
-	/// <value>french fries impulse force</value>
-	public static float FrenchFriesImpulseForce
-    {
-		get { return 10; }
-	}
-
-	/// <summary>
-	/// Gets the number of seconds the burger takes
-	/// to cool down so it can shoot again
-	/// </summary>
-	/// <value>burger cooldown seconds</value>
-	public static float BurgerCooldownSeconds
-    {
-		get { return 0.5f; }
-	}
+	
 
 	/// <summary>
 	/// Gets how many points a bear is worth
@@ -101,43 +55,18 @@ public static class ConfigurationUtils
 		get { return 10; }
 	}
 
-	/// <summary>
-	/// Gets the impulse force to apply to teddy bear projectiles
-	/// </summary>
-	/// <value>teddy bear projectile impulse force</value>
-	public static float TeddyBearProjectileImpulseForce
+	public static float HealthEnemy1
     {
-		get { return 5; }
+		get { return 10; }
 	}
-
-	/// <summary>
-	/// Gets the minimum delay for a teddy bear to shoot
-	/// a teddy bear projectile
-	/// </summary>
-	/// <value>bear minimum shot delay</value>
-	public static float BearMinShotDelay
+    public static float HealthEnemy2
     {
-		get { return DifficultyUtils.BearMinShotDelay; }
-	}
-
-	/// <summary>
-	/// Gets the maximum delay for a teddy bear to shoot
-	/// a teddy bear projectile
-	/// </summary>
-	/// <value>bear maximum shot delay</value>
-	public static float BearMaxShotDelay
+        get { return 20; }
+    }
+    public static float HealthEnemy3
     {
-		get { return DifficultyUtils.BearMaxShotDelay; }
-	}
-		
-	/// <summary>
-	/// Gets the amount of damage a teddy bear projectile inflicts
-	/// </summary>
-	/// <value>bear damage</value>
-	public static int BearProjectileDamage
-    {
-		get { return 5; }
-	}
+        get { return 30; }
+    }
 
     #endregion
 
@@ -202,229 +131,111 @@ public static class ConfigurationUtils
     {
 		get { return 1; }
 	}
+ 
 
-    /// <summary>
-    /// Gets the easy min impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy minimum impulse force</value>
-    public static float EasyMinImpulseForce
-    {
-		get { return 2; }
-	}
-
-    /// <summary>
-    /// Gets the medium min impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium minimum impulse force</value>
-    public static float MediumMinImpulseForce
-    {
-		get { return 2.5f; }
-	}
-
-    /// <summary>
-    /// Gets the hard min impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard minimum impulse force</value>
-    public static float HardMinImpulseForce
-    {
-		get { return 3; }
-	}
-
-    /// <summary>
-    /// Gets the easy max impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy maximum impulse force</value>
-    public static float EasyMaxImpulseForce
-    {
-        get { return 4; }
-    }
-
-    /// <summary>
-    /// Gets the medium max impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium maximum impulse force</value>
-    public static float MediumMaxImpulseForce
+    public static float HardSpeedEnemy1
     {
         get { return 5f; }
     }
-
-    /// <summary>
-    /// Gets the hard max impulse force for teddy bears
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard maximum impulse force</value>
-    public static float HardMaxImpulseForce
+    public static float MediumSpeedEnemy1
     {
-        get { return 6; }
+        get { return 4f; }
+    }
+    public static float EasySpeedEnemy1
+    {
+        get { return 3f; }
     }
 
-    /// <summary>
-    /// Gets the easy max number of bears 
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy max number bears</value>
-    public static int EasyMaxNumBears
+    public static float HardSpeedEnemy2
     {
-		get { return 5; }
-	}
-
-    /// <summary>
-    /// Gets the medium max number of bears 
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium max number bears</value>
-    public static int MediumMaxNumBears
+        get { return 4f; }
+    }
+    public static float MediumSpeedEnemy2
     {
-		get { return 7; }
-	}
-
-    /// <summary>
-    /// Gets the hard max number of bears 
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard max number bears</value>
-    public static int HardMaxNumBears
-    {
-		get { return 10; }
-	}
-
-    /// <summary>
-    /// Gets the easy minimum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy bear minimum shot delay</value>
-    public static float EasyBearMinShotDelay
-    {
-		get { return 1.5f; }
-	}
-
-    /// <summary>
-    /// Gets the medium minimum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium bear minimum shot delay</value>
-    public static float MediumBearMinShotDelay
-    {
-		get { return 1f; }
-	}
-
-    /// <summary>
-    /// Gets the hard minimum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard bear minimum shot delay</value>
-    public static float HardBearMinShotDelay
-    {
-		get { return 0.5f; }
-	}
-
-    /// <summary>
-    /// Gets the easy maximum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy bear maximum shot delay</value>
-    public static float EasyBearMaxShotDelay
-    {
-		get { return 2.5f; }
-	}
-
-    /// <summary>
-    /// Gets the medium maximum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium bear maximum shot delay</value>
-    public static float MediumBearMaxShotDelay
-    {
-		get { return 2f; }
-	}
-
-    /// <summary>
-    /// Gets the hard maximum delay for a teddy bear to shoot
-    /// a teddy bear projectile
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard bear maximum shot delay</value>
-    public static float HardBearMaxShotDelay
-    {
-		get { return 1.5f; }
-	}
-
-    /// <summary>
-    /// Gets the easy delay for a teddy bear to
-    /// move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy bear homing delay</value>
-    public static float EasyBearHomingDelay
+        get { return 3f; }
+    }
+    public static float EasySpeedEnemy2
     {
         get { return 2f; }
     }
 
-    /// <summary>
-    /// Gets the medium delay for a teddy bear to
-    /// move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium bear homing delay</value>
-    public static float MediumBearHomingDelay
+    public static float HardSpeedEnemy3
     {
-        get { return 1.25f; }
+        get { return 3f; }
+    }
+    public static float MediumSpeedEnemy3
+    {
+        get { return 2f; }
+    }
+    public static float EasySpeedEnemy3
+    {
+        get { return 1f; }
     }
 
-    /// <summary>
-    /// Gets the hard delay for a teddy bear to
-    /// move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard bear homing delay</value>
-    public static float HardBearHomingDelay
+    public static float Enemy1Speed
     {
-        get { return 0.5f; }
+        get { return DifficultyUtils.SpeedEnemy1; }
+    }
+    public static float Enemy2Speed
+    {
+        get { return DifficultyUtils.SpeedEnemy2; }
+    }
+    public static float Enemy3Speed
+    {
+        get { return DifficultyUtils.SpeedEnemy3; }
     }
 
-    /// <summary>
-    /// Gets the easy delay for a teddy bear projectile 
-    /// to move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>easy bear projectile homing delay</value>
-    public static float EasyBearProjectileHomingDelay
+    public static int HardAttackEnemy1
     {
-        get { return 0.5f; }
+        get { return 3; }
+    }
+    public static int MediumAttackEnemy1
+    {
+        get { return 2; }
+    }
+    public static int EasyAttackEnemy1
+    {
+        get { return 1; }
     }
 
-    /// <summary>
-    /// Gets the medium delay for a teddy bear projectile
-    /// to move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>medium bear projectile homing delay</value>
-    public static float MediumBearProjectileHomingDelay
+    public static int HardAttackEnemy2
     {
-        get { return 0.35f; }
+        get { return 4; }
+    }
+    public static int MediumAttackEnemy2
+    {
+        get { return 3; }
+    }
+    public static int EasyAttackEnemy2
+    {
+        get { return 2; }
     }
 
-    /// <summary>
-    /// Gets the hard delay for a teddy bear projectile
-    /// to move toward the burger
-    /// This property should only be used by DifficultyUtils
-    /// </summary>
-    /// <value>hard bear projectile homing delay</value>
-    public static float HardBearProjectileHomingDelay
+    public static int HardAttackEnemy3
     {
-        get { return 0.2f; }
+        get { return 5; }
+    }
+    public static int MediumAttackEnemy3
+    {
+        get { return 4; }
+    }
+    public static int EasyAttackEnemy3
+    {
+        get { return 3; }
     }
 
+    public static int Enemy1Attack
+    {
+        get { return DifficultyUtils.AttackEnemy1; }
+    }
+    public static int Enemy2Attack
+    {
+        get { return DifficultyUtils.AttackEnemy2; }
+    }
+    public static int Enemy3Attack
+    {
+        get { return DifficultyUtils.AttackEnemy3; }
+    }
     #endregion
 
     #region Public methods
@@ -434,26 +245,7 @@ public static class ConfigurationUtils
     /// </summary>
     public static void Initialize()
     {		
-		// deserialize configuration data from file into internal object
-//		FileStream fs = null;
-//		try 
-//      {
-//			fs = new FileStream("ConfigurationData.xml",
-//				FileMode.Open);
-//			XmlDictionaryReader reader =
-//				XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-//			DataContractSerializer ser = new DataContractSerializer(typeof(ConfigurationData));
-//			configurationData = (ConfigurationData)ser.ReadObject(reader, true);
-//			reader.Close();
-//		} 
-//      finally 
-//      {
-//			// always close input file
-//			if (fs != null) 
-//          {
-//				fs.Close();
-//			}
-//		}
+
 	}
 
 
