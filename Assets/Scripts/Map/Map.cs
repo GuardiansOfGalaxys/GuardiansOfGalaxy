@@ -4,6 +4,16 @@ using UnityEngine.Tilemaps;
 
 public class Map : MonoBehaviour
 {
-    private List<GameObject> items  { get; set; }
-    private List<GameObject> enermies { get; set; }
+    public List<GameObject> objectsInMap = new();
+    public Vector3 vectorMove;
+
+    public void AddToList(GameObject gameObject)
+    {
+        objectsInMap.Add(gameObject);
+    }
+
+    public void RemoveOnList(GameObject gameObject)
+    {
+        objectsInMap.Remove(gameObject);
+    }
 }
