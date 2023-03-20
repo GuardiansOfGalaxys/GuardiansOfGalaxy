@@ -9,18 +9,25 @@ public class PlayerController : MonoBehaviour
     HUD hud;
     MapController mapController;
     ItemController itemController;
+    SpawnEnermy enermyController;
     float spawnItemTime = 0;
     readonly float xOffset = (float)Const.Map.x / 2;
     readonly float yOffset = (float)Const.Map.y / 2;
+    TimerEnermySpawn timerES;
     // Start is called before the first frame update
     void Start()
     {
         player = InitPlayer.player;
         mapController = player.mapController;
         itemController = player.itemController;
+        enermyController = player.enermyController;
         hud = FindObjectOfType<HUD>(); ;
         mapController.AddMapToList();
         AddHealthBar();
+        timerES = gameObject.AddComponent<TimerEnermySpawn>();
+        timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
+            ConfigurationUtils.MaxSpawnDelay);
+        timerES.Run();
     }
 
     // Update is called once per frame
@@ -29,6 +36,7 @@ public class PlayerController : MonoBehaviour
         player.Update();
 
         SpawnItem();
+        spawnEnermy();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +55,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void spawnEnermy()
+    {
+        if (timerES.Finished)
+        {
+            GameObject enermy = enermyController.SpawnObject();
+            AddToListOfMap(enermy);
+            timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
+            ConfigurationUtils.MaxSpawnDelay);
+            timerES.Run();
+        }
+    }
+
     private void SpawnItem()
     {
         spawnItemTime += Time.deltaTime;
@@ -56,7 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject item = itemController.SpawnItem(spawnPos);
             spawnItemTime = 0f;
-            AddToListOfMap(item);
+            item.GetComponent<Item>().tilemapContainItem = AddToListOfMap(item);
         }
         
     }

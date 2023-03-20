@@ -23,6 +23,7 @@ public class Character : IntEventInvoker
     public Transform transform { get; set; }
     public MapController mapController { get; set; }
     public ItemController itemController { get; set; }
+    public SpawnEnermy enermyController { get; set; }
     public HUD hud;
     public Camera camera { get; set; }
 

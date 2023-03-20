@@ -28,32 +28,17 @@ public class SpawnEnermy : MonoBehaviour
     public GameObject enemyLv3Prefab;
     public bool isPlay = false;
     private Camera mainCamera;
-    TimerEnermySpawn timerES;
+    //TimerEnermySpawn timerES;
 
     public static List<EnermyS> lstEnermy = new List<EnermyS>();
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
-        timerES = gameObject.AddComponent<TimerEnermySpawn>();
-        timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
-            ConfigurationUtils.MaxSpawnDelay);
-        timerES.Run();
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (timerES.Finished) 
-        {
-            SpawnObject();
-            timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
-            ConfigurationUtils.MaxSpawnDelay);
-            timerES.Run();
-        }
-    }
-
-    private void SpawnObject()
+    public GameObject SpawnObject()
     {
         GameObject a;
         Vector3 randomPosition = mainCamera.ViewportToWorldPoint(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 0));
@@ -78,6 +63,7 @@ public class SpawnEnermy : MonoBehaviour
 
         }
         //Debug.Log(random);
+        return a;
         
     }
     
