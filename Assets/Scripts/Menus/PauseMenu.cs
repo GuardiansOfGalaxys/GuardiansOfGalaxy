@@ -21,7 +21,8 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            //Debug.Log("Escape");
+            AudioManager.Play(AudioClipName.MenuButtonClick);
+            Debug.Log("Escape");
             if(isGamePaused)
             {
                 Resume();
@@ -51,6 +52,7 @@ public class PauseMenu : MonoBehaviour
     public void Home(int sceneID)
     {
         Time.timeScale = 1f;
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         SceneManager.LoadScene(sceneID);
         //Debug.Log("Home");
     }

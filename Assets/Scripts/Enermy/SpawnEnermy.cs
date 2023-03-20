@@ -36,7 +36,8 @@ public class SpawnEnermy : MonoBehaviour
     {
         mainCamera = Camera.main;
         timerES = gameObject.AddComponent<TimerEnermySpawn>();
-        timerES.Duration = 2f;
+        timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
+            ConfigurationUtils.MaxSpawnDelay);
         timerES.Run();
     }
 
@@ -46,7 +47,8 @@ public class SpawnEnermy : MonoBehaviour
         if (timerES.Finished) 
         {
             SpawnObject();
-            timerES.Duration = 2f;
+            timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
+            ConfigurationUtils.MaxSpawnDelay);
             timerES.Run();
         }
     }

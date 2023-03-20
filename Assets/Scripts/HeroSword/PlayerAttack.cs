@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) 
         {
+            AudioManager.Play(AudioClipName.SwordFighting);
             Attack();
         }
 
