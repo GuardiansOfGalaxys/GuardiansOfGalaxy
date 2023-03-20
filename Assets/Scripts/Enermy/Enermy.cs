@@ -13,7 +13,8 @@ public class Enermy : IntEventInvoker
     private float currenAttack;
     // round playing
     public int round = 1;
-
+    private bool timerStarted = false;
+    private float timer = 0f;
     private Transform target;
     private float distance;
     private int currentAttack;
@@ -77,7 +78,7 @@ public class Enermy : IntEventInvoker
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         
         // check round
-        //UpdateEnemy();
+        UpdateEnemy();
     }
     public void TakeDamage(float damage)
     {
@@ -101,21 +102,27 @@ public class Enermy : IntEventInvoker
             Destroy(gameObject);
         }
     }
-    //public void UpdateEnemy()
-    //{
-    //    // Check if the round has changed
-    //    if (GameManager.instance.currentRound != round)
-    //    {
-    //        // Update the round number
-    //        round = GameManager.instance.currentRound;
+    public void UpdateEnemy()
+    {
+        timerStarted = true;
+        // Check if the round has changed
+        if (timerStarted)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 60f)
+            {
 
-    //        // Increase the enemy's health and attack speed for the new round
-    //        currentHealth += 2 * (round - 1);
-    //        currenAttack += (round - 1);
-    //        currentSpeed += 0.2f * (round - 1);
-    //        currentAttackSpeed = currentAttackSpeed;
-    //    } 
-    //}
+                // Increase the enemy's health and attack speed for the new round
+                currentHealth += 2 ;
+                currenAttack += 1;
+                currentSpeed += 0.2f ;
+
+                timer = 0f;
+                timerStarted = false;
+                Debug.Log("Update quai: "+currentHealth + " + " + currenAttack + " + "+ currentSpeed);
+            }
+        }
+    }
 
     public void TakeDamageInPlayer(int damage)
     {
