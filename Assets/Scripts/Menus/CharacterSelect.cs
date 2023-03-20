@@ -22,7 +22,7 @@ public class CharacterSelect : MonoBehaviour
     public void OnPlayBtnClick()
     {
         AudioManager.Play(AudioClipName.MenuButtonClick);
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene("MenuLevelPlayer");
     }
 
     public void OnPreBtnClick()
@@ -32,6 +32,7 @@ public class CharacterSelect : MonoBehaviour
         {
         index--;
         }
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         selectCharacter();
     }
 
@@ -42,6 +43,7 @@ public class CharacterSelect : MonoBehaviour
         {
         index++;    
         }
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         selectCharacter();
     }
     private void selectCharacter()
