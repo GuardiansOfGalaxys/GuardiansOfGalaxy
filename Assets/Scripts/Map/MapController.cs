@@ -13,29 +13,28 @@ public class MapController : MonoBehaviour
     public Tilemap tilemapBottomRight;
     public Tilemap tilemapLeft;
     public Tilemap tilemapRight;
-    public static List<GameObject> itemsIntilemapTop;
-    public static List<GameObject> itemsIntilemapTopTopLeft;
-    public static List<GameObject> itemsIntilemapTopRight;
-    public static List<GameObject> itemsIntilemapBottom;
-    public static List<GameObject> itemsIntilemapBottomLeft;
-    public static List<GameObject> itemsIntilemapBottomRight;
-    public static List<GameObject> itemsIntilemapLeft;
-    public static List<GameObject> itemsIntilemapRight;
     public List<Tilemap> tilemaps;
     readonly float xOffset = (float)Const.Map.x;
     readonly float yOffset = (float)Const.Map.y;
     readonly float moveMapSpeed = (float)Const.Map.moveSpeed;
 
+    private void Start()
+    {
+        AddMapToList();
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("MapTrigger"))
         {
-            // MoveMap();
+            //BeforeMove();
+            MoveMap();
+            MoveObject();
         }
-
+        
     }
 
-    public void addMapToList()
+    public void AddMapToList()
     {
         tilemaps.Add(tilemapTop);
         tilemaps.Add(tilemapMiddle);
@@ -46,7 +45,54 @@ public class MapController : MonoBehaviour
         tilemaps.Add(tilemapTopRight);
         tilemaps.Add(tilemapBottomLeft);
         tilemaps.Add(tilemapBottomRight);
-    }   
+    }
+
+    private void BeforeMove()
+    {
+        tilemaps.ForEach(tilemap =>
+        {
+            Vector3 tilemapPos = tilemap.transform.position;
+            List<GameObject> objectsInMap = tilemap.GetComponent<Map>().objectsInMap;
+            objectsInMap.ForEach(o =>
+            {
+
+            });
+            
+        });
+
+    }
+
+    private void MoveMap()
+    {
+        MoveMapBaseOnCurrentMap(tilemapTop, new Vector3(0, yOffset, 0));
+        tilemapTopLeft.transform.position = transform.position + new Vector3(-xOffset, yOffset, 0);
+        tilemapTopRight.transform.position = transform.position + new Vector3(xOffset, yOffset, 0);
+        tilemapLeft.transform.position = transform.position + new Vector3(-xOffset, 0, 0);
+        tilemapRight.transform.position = transform.position + new Vector3(xOffset, 0, 0);
+        MoveMapBaseOnCurrentMap(tilemapBottom, new Vector3(0, -yOffset, 0));
+        //tilemapBottom.transform.position = transform.position + new Vector3(0, -yOffset, 0);
+        tilemapBottomLeft.transform.position = transform.position + new Vector3(-xOffset, -yOffset, 0);
+        tilemapBottomRight.transform.position = transform.position + new Vector3(xOffset, -yOffset, 0);
+    }
+
+    private void MoveMapBaseOnCurrentMap(Tilemap tilemap, Vector3 vectorOffset)
+    {
+        tilemap.GetComponent<Map>().vectorMove = transform.position + vectorOffset - tilemap.transform.position;
+        tilemap.transform.position = transform.position + vectorOffset;
+    }
+
+    private void MoveObject()
+    {
+        tilemaps.ForEach(tilemap =>
+        {
+            Map map = tilemap.GetComponent<Map>();
+            //List<GameObject> objectsInMap = map.objectsInMap;
+            map.objectsInMap.ForEach(o =>
+            {
+                o.transform.position += map.vectorMove;
+            });
+        });
+    }
 
     public void MoveMap(GameObject currentMap, Vector3 playerPos)
     {
@@ -76,6 +122,7 @@ public class MapController : MonoBehaviour
     public void Move(GameObject currentMap, Vector3 direction)
     {
         List<Tilemap> tilemaps = new();
+        Dictionary<Tilemap, Vector3> tilemapAndVector = new();
         Debug.Log(tilemapBottom.cellBounds);
         if (direction.x > 0)
         {
@@ -167,5 +214,13 @@ public class MapController : MonoBehaviour
     public void Move(List<Tilemap> tilemaps, Vector3 direction)
     {
         tilemaps.ForEach(tilemap => tilemap.transform.position += (new Vector3(direction.x * xOffset, direction.y * yOffset, 0) * 3));
+    }
+
+    public void Move(Dictionary<Tilemap, Vector3> tilemapsAndVectors, Vector3 currentMapPos)
+    {
+        foreach (KeyValuePair<Tilemap, Vector3> tilemapAndVector in tilemapsAndVectors)
+        {
+            tilemapAndVector.Key.transform.position = currentMapPos + tilemapAndVector.Value;
+        }
     }
 }

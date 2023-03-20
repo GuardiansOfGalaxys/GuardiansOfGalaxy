@@ -152,8 +152,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2088210230}
-  - {fileID: 974073977}
-  - {fileID: 934156166}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -271,7 +269,7 @@ MonoBehaviour:
   scoreText: {fileID: 1490236859}
   healthBar: {fileID: 676154572}
   timerText: {fileID: 1099042782}
-  playerController: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &202585811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11958,111 +11956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d42999752b561b438028f8ca2ee0f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &934156164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 934156166}
-  - component: {fileID: 934156167}
-  m_Layer: 0
-  m_Name: ItemController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &934156166
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934156164}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -413.3109, y: -465.49454, z: 4.5259767}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 67912729}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &934156167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934156164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6340dab553ecc4dab43fd74ae8a2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 1658580238}
-  gameObjects:
-  - {fileID: 727302535923717361, guid: 7f2f1367b5cb35044a814159493aaf9c, type: 3}
-  - {fileID: 8464269236237721900, guid: 9a83ee9616c30504dbd363fdeb922325, type: 3}
-  rates:
-  - 0.5
-  - 0.5
---- !u!1 &974073976
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 974073977}
-  - component: {fileID: 974073978}
-  m_Layer: 0
-  m_Name: MapController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &974073977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974073976}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -413.3109, y: -465.49454, z: 5.5259767}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 67912729}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &974073978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974073976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036d00221299cbe498665de923e4ee81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemapMiddle: {fileID: 1434528544}
-  tilemapTop: {fileID: 1429182621}
-  tilemapTopLeft: {fileID: 1220183127}
-  tilemapTopRight: {fileID: 2139157514}
-  tilemapBottom: {fileID: 1235959378}
-  tilemapBottomLeft: {fileID: 1242007798}
-  tilemapBottomRight: {fileID: 656645112}
-  tilemapLeft: {fileID: 762798594}
-  tilemapRight: {fileID: 632047023}
-  tilemaps: []
 --- !u!1001 &1019070814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32119,8 +32012,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1658580238}
-  mapController: {fileID: 974073976}
-  itemController: {fileID: 934156164}
+  mapController: {fileID: 0}
+  itemController: {fileID: 0}
 --- !u!1 &2139157511
 GameObject:
   m_ObjectHideFlags: 0

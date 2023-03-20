@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Item : MonoBehaviour
 {
     public float existenceTime { get; set; }
+    public Tilemap tilemapContainItem;
 
     public Item()
     {
@@ -18,6 +20,11 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void OnDestroy()
+    {
+        tilemapContainItem.GetComponent<Map>().objectsInMap.Remove(gameObject);
     }
 
 }
