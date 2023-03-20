@@ -20,11 +20,13 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("start map");
         AddMapToList();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("abc");
         if (collider.CompareTag("MapTrigger"))
         {
             //BeforeMove();
@@ -123,7 +125,7 @@ public class MapController : MonoBehaviour
     {
         List<Tilemap> tilemaps = new();
         Dictionary<Tilemap, Vector3> tilemapAndVector = new();
-        Debug.Log(tilemapBottom.cellBounds);
+       // Debug.Log(tilemapBottom.cellBounds);
         if (direction.x > 0)
         {
             if (currentMap.name.Equals(Const.Map.tilemapTopRight) || currentMap.name.Equals(Const.Map.tilemapRight) || currentMap.name.Equals(Const.Map.tilemapBottomRight))

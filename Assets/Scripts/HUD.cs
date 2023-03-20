@@ -76,15 +76,12 @@ public class HUD : MonoBehaviour
 	/// <param name="value">health value</param>
 	public void HandleHealthChangedEvent(int value)
 	{
-		Debug.Log(player.health);
-
 		healthBar.value = player.currentHealth - value;
 		player.currentHealth = (int)healthBar.value;
 		if (healthBar.value == 0)
 		{
 			Destroy(player);
 		}
-		Debug.Log(player.currentHealth);
 	}
 
 	/// <summary>
