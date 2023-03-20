@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -80,18 +82,39 @@ public class HUD : MonoBehaviour
 		player.currentHealth = (int)healthBar.value;
 		if (healthBar.value == 0)
 		{
-			Destroy(player);
-		}
+			//Destroy(player);
+			SetHighScore();
+            SceneManager.LoadScene("EndGame");
+        }
+		
 	}
 
-	/// <summary>
-	/// Handles the timer changed event by updating the displayed timer
-	/// </summary>
-	/// <param name="value">timer value</param>
-	void HandleTimerChangedEvent(int value)
+    void SetHighScore()
+    {
+
+        int currentScore = Score;
+        if (PlayerPrefs.HasKey("High Score"))
+        {
+            if (currentScore > PlayerPrefs.GetInt("High Score", 0))
+            {
+                PlayerPrefs.SetInt("High Score", currentScore);
+                PlayerPrefs.Save();
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("High Score", currentScore);
+            PlayerPrefs.Save();
+        }
+    }
+    /// <summary>
+    /// Handles the timer changed event by updating the displayed timer
+    /// </summary>
+    /// <param name="value">timer value</param>
+    void HandleTimerChangedEvent(int value)
     {
 		timerText.text = value.ToString();
 	}
-		
-	#endregion
+
+    #endregion
 }
