@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isGamePaused= true;
-        Debug.Log("Pause");
+        //Debug.Log("Pause");
     }
 
     public void Resume()
@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused= false;
-        Debug.Log("Resume");
+        //Debug.Log("Resume");
     }
 
     public void Home(int sceneID)
@@ -54,6 +54,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         AudioManager.Play(AudioClipName.MenuButtonClick);
         SceneManager.LoadScene(sceneID);
-        Debug.Log("Home");
+        //Debug.Log("Home");
     }
 }
