@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            
         }
     }
     void Shoot()
@@ -25,5 +26,6 @@ public class Gun : MonoBehaviour
         // get the rigidbody component of the bullet object
         Rigidbody2D rb = bull.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        AudioManager.Play(AudioClipName.BurgerShot);
     }
 }

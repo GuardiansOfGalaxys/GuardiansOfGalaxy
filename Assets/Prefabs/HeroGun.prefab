@@ -279,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4604858390649235508, guid: 9024d50f0bd5191408e76549d1a58e2f, type: 3}
   firePoint: {fileID: 3580287062214326399}
+  shootSound: {fileID: 8300000, guid: 8f2f7eb4259c4ec4fa888c3b423041b3, type: 3}
   bulletForce: 20
 --- !u!1 &7998826908056312160
 GameObject:
