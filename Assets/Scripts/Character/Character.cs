@@ -21,7 +21,9 @@ public class Character : IntEventInvoker
     public BoxCollider2D boxCollider2D { get; set; }
 
     public Transform transform { get; set; }
-
+    public MapController mapController { get; set; }
+    public ItemController itemController { get; set; }
+    public HUD hud;
     public Camera camera { get; set; }
 
     private float currentSpeed;
@@ -38,13 +40,15 @@ public class Character : IntEventInvoker
         EventManager.AddInvoker(EventName.HealthChangedEvent, this);
         unityEvents.Add(EventName.GameOverEvent, new GameOverEvent());
         EventManager.AddInvoker(EventName.GameOverEvent, this);
+        hud = FindObjectOfType<HUD>();
     }
-        public Character(GameObject gameObject)
+    public Character(GameObject gameObject)
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         transform = gameObject.transform;
+        hud = FindObjectOfType<HUD>();
     }
 
 
@@ -53,7 +57,6 @@ public class Character : IntEventInvoker
         InputHandle();
         FixedUpdate();
         ControlGhostEffectRemaining();
-       
     }
 
     private void InputHandle()
@@ -65,7 +68,6 @@ public class Character : IntEventInvoker
     }
     private void FixedUpdate()
     {
-        
         Move();
     }
 
@@ -97,24 +99,30 @@ public class Character : IntEventInvoker
 
     public void Heal()
     {
-        this.currentHealth = (this.currentHealth + this.health * Const.Item.Heal.healBuff) > this.health ? this.health
-            : (int)(this.currentHealth + this.health * Const.Item.Heal.healBuff);
+        if ((currentHealth + health * Const.Item.Heal.healBuff) > health)
+        {
+            hud.HandleHealthChangedEvent(-health + currentHealth);
+        }
+        else
+        {
+            hud.HandleHealthChangedEvent(-(int)(currentHealth + health * Const.Item.Heal.healBuff));
+        }
     }
 
     public void Ghost()
     {
-        this.speed *= Const.Item.Ghost.speedBuff + 1;
-        this.ghostEffectRemaining = Const.Item.Ghost.existenceTimeOnPlayer;
+        speed *= Const.Item.Ghost.speedBuff + 1;
+        ghostEffectRemaining = Const.Item.Ghost.existenceTimeOnPlayer;
     }
 
     private void ControlGhostEffectRemaining()
     {
-        if (this.ghostEffectRemaining > 0)
+        if (ghostEffectRemaining > 0)
         {
-            this.ghostEffectRemaining -= Time.deltaTime;
-            if (this.ghostEffectRemaining <= 0)
+            ghostEffectRemaining -= Time.deltaTime;
+            if (ghostEffectRemaining <= 0)
             {
-                this.speed = this.oldSpeed;
+                speed = oldSpeed;
             }
         }
     }

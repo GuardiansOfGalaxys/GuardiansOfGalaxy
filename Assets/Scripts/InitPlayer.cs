@@ -11,6 +11,8 @@ public class InitPlayer : MonoBehaviour
     public static Character player;
     [SerializeField]
     public Camera camera;
+    public GameObject mapController;
+    public GameObject itemController;
     private float timer = 0f;
     private bool timerStarted = false;
     private bool timerUpdateCharacter = true;
@@ -45,12 +47,20 @@ public class InitPlayer : MonoBehaviour
         switch (selectedCharater.name)
         {
             case "HeroSword":
-                player = new HeroSword(playerObject);
-                player.camera = camera;
+                player = new HeroSword(playerObject)
+                {
+                    camera = camera,
+                    mapController = mapController.GetComponent<MapController>(),
+                    itemController = itemController.GetComponent<ItemController>(),
+                };
                 break;
             case "HeroGun":
-                player = new HeroGun(playerObject);
-                player.camera = camera;
+                player = new HeroGun(playerObject)
+                {
+                    camera = camera,
+                    mapController = mapController.GetComponent<MapController>(),
+                    itemController = itemController.GetComponent<ItemController>(),
+                };
                 break;
         }
 

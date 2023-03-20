@@ -152,7 +152,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -306,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1744215681096169187}
   - component: {fileID: 1430298550185078128}
+  - component: {fileID: 8586082362886768788}
   m_Layer: 0
   m_Name: Maptrigger
   m_TagString: MapTrigger
@@ -354,3 +355,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &8586082362886768788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998826908056312160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d722a59d776bf4badd462aa9f11bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

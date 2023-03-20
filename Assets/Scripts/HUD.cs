@@ -19,16 +19,13 @@ public class HUD : MonoBehaviour
 
 	// health support
 	[SerializeField]
-	Slider healthBar;
+	public Slider healthBar;
 
 	// timer support
 	[SerializeField]
 	Text timerText;
 
-	GameObject player;
-	Character character;
-
-	private int currentHealth;
+	public Character player;
     #endregion
 
     /// <summary>
@@ -47,21 +44,7 @@ public class HUD : MonoBehaviour
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
 		timerText.text = "60";
 
-      
-        player = CharacterSelect.selectedCharater;
-		if (player.name == "HeroGun")
-		{
-            character = new HeroGun(player);
-            healthBar.maxValue = character.health;
-		}
-        if (player.name == "HeroSword")
-        {
-            character = new HeroSword(player);
-            healthBar.maxValue = character.health;
-        }
-
-        currentHealth = (int) healthBar.maxValue;
-    }
+	}
 
 	#region Properties
 
@@ -94,11 +77,10 @@ public class HUD : MonoBehaviour
 	/// </summary>
 	/// <param name="value">health value</param>
 	public void HandleHealthChangedEvent(int value)
-    {
-		
-        healthBar.value = currentHealth - value;
-		currentHealth = (int) healthBar.value;
-        if (healthBar.value == 0)
+	{
+		healthBar.value = player.currentHealth - value;
+		player.currentHealth = (int)healthBar.value;
+		if (healthBar.value == 0)
 		{
 			//Destroy(player);
 			SetHighScore();
