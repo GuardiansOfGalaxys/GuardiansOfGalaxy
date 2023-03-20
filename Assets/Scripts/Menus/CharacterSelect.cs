@@ -21,11 +21,13 @@ public class CharacterSelect : MonoBehaviour
 
     public void OnPlayBtnClick()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         SceneManager.LoadScene("GamePlay");
     }
 
     public void OnPreBtnClick()
     {
+        
         if (index > 0) 
         {
         index--;
@@ -35,6 +37,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void OnNextBtnClick()
     {
+
         if (index < characters.Length -1)
         {
         index++;    
@@ -56,5 +59,10 @@ public class CharacterSelect : MonoBehaviour
                 characters[i].GetComponent<SpriteRenderer>().color = Color.black;
             }
         }
+    }
+    public void HandleBackButtonOnClickEvent()
+    {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
+        SceneManager.LoadScene("MainMenu");
     }
 }

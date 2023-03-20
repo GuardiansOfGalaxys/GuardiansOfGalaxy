@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void HandlePlayButtonOnClickEvent()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         SceneManager.LoadScene("WeaponChoose");
     }
 
@@ -28,10 +29,12 @@ public class MainMenu : MonoBehaviour
 	/// </summary>
 	public void HandleHighScoreButtonOnClickEvent()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         SceneManager.LoadScene("HighScore");
     }
     public void HandleQuitButtonOnClickEvent()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         Application.Quit();
     }
 }

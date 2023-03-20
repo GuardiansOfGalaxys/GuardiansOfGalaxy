@@ -33,6 +33,10 @@ public static class AudioManager
             Resources.Load<AudioClip>("BurgerShot"));
         audioClips.Add(AudioClipName.Explosion,
              Resources.Load<AudioClip>("Explosion"));
+        audioClips.Add(AudioClipName.MenuButtonClick,
+            Resources.Load<AudioClip>("ButtonClick"));
+        audioClips.Add(AudioClipName.PauseGame,
+             Resources.Load<AudioClip>("ButtonClick"));
     }
 
     /// <summary>
