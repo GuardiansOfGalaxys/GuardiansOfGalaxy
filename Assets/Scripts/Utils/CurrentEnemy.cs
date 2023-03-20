@@ -8,23 +8,23 @@ public class CurrentEnemy
     {
         public static class EnemyLv1
         {
-            public static float health = 10;
-            public static int attack = 2;
-            public static float speed = 3;
+            public static float health = ConfigurationUtils.HealthEnemy1;
+            public static int attack = ConfigurationUtils.Enemy1Attack;
+            public static float speed = ConfigurationUtils.Enemy1Speed;
             public static float attackSpeed = 1;
         }
         public static class EnemyLv2
         {
-            public static float health = 20;
-            public static int attack = 3;
-            public static float speed = 2;
+            public static float health = ConfigurationUtils.HealthEnemy2;
+            public static int attack = ConfigurationUtils.Enemy2Attack;
+            public static float speed = ConfigurationUtils.Enemy2Speed;
             public static float attackSpeed = 1;
         }
         public static class EnemyLv3
         {
-            public static float health = 30;
-            public static int attack = 4;
-            public static float speed = 1;
+            public static float health = ConfigurationUtils.HealthEnemy3;
+            public static int attack = ConfigurationUtils.Enemy3Attack;
+            public static float speed = ConfigurationUtils.Enemy3Speed;
             public static float attackSpeed = 1;
         }
     }

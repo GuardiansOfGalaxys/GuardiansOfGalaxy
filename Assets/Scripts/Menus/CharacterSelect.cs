@@ -21,24 +21,29 @@ public class CharacterSelect : MonoBehaviour
 
     public void OnPlayBtnClick()
     {
-        SceneManager.LoadScene("GamePlay");
+        AudioManager.Play(AudioClipName.MenuButtonClick);
+        SceneManager.LoadScene("MenuLevelPlayer");
     }
 
     public void OnPreBtnClick()
     {
+        
         if (index > 0) 
         {
         index--;
         }
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         selectCharacter();
     }
 
     public void OnNextBtnClick()
     {
+
         if (index < characters.Length -1)
         {
         index++;    
         }
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         selectCharacter();
     }
     private void selectCharacter()
@@ -56,5 +61,10 @@ public class CharacterSelect : MonoBehaviour
                 characters[i].GetComponent<SpriteRenderer>().color = Color.black;
             }
         }
+    }
+    public void HandleBackButtonOnClickEvent()
+    {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
+        SceneManager.LoadScene("MainMenu");
     }
 }
