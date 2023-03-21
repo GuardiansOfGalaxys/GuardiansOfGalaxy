@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     GameObject pauseMenu;
     [SerializeField]
     Text timerText;
-    Timer gameTimer;
 
     public static bool isGamePaused = false;
 
@@ -66,12 +66,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
-        timerText.text = "10";
-
+        MainPlayScreenHUD tec = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainPlayScreenHUD>();
+        tec.gameTimer.Run();
         //for (int i = 10; i >= 0; i--)
         //{
         //    timerText.text = i.ToString();
-            
+
         //}
 
     }
