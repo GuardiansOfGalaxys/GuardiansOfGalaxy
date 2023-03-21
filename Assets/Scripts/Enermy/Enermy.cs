@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static UnityEngine.GraphicsBuffer;
 
 public class Enermy : IntEventInvoker
@@ -24,6 +25,7 @@ public class Enermy : IntEventInvoker
 
     public HUD hub;
     public int damageEnemy;
+    public Tilemap tilemapContainItem;
 
 
     // Start is called before the first frame update
@@ -147,6 +149,16 @@ public class Enermy : IntEventInvoker
 
         }
 
+        
+
+    }
+
+    private void OnDestroy()
+    {
+        if(tilemapContainItem != null)
+        {
+            tilemapContainItem.GetComponent<Map>().objectsInMap.Remove(gameObject);
+        }
     }
 
 

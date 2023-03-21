@@ -26,12 +26,17 @@ public class MapController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("abc");
         if (collider.CompareTag("MapTrigger"))
         {
             //BeforeMove();
             MoveMap();
             MoveObject();
+        }
+        else if(collider.tag.Contains("Enemy"))
+        {
+            tilemapMiddle.GetComponent<Map>().objectsInMap.Add(collider.gameObject);
+            collider.GetComponent<Enermy>().tilemapContainItem.GetComponent<Map>().objectsInMap.Remove(collider.gameObject);
+            collider.GetComponent<Enermy>().tilemapContainItem = tilemapMiddle;
         }
         
     }
@@ -49,32 +54,16 @@ public class MapController : MonoBehaviour
         tilemaps.Add(tilemapBottomRight);
     }
 
-    private void BeforeMove()
-    {
-        tilemaps.ForEach(tilemap =>
-        {
-            Vector3 tilemapPos = tilemap.transform.position;
-            List<GameObject> objectsInMap = tilemap.GetComponent<Map>().objectsInMap;
-            objectsInMap.ForEach(o =>
-            {
-
-            });
-            
-        });
-
-    }
-
     private void MoveMap()
     {
         MoveMapBaseOnCurrentMap(tilemapTop, new Vector3(0, yOffset, 0));
-        tilemapTopLeft.transform.position = transform.position + new Vector3(-xOffset, yOffset, 0);
-        tilemapTopRight.transform.position = transform.position + new Vector3(xOffset, yOffset, 0);
-        tilemapLeft.transform.position = transform.position + new Vector3(-xOffset, 0, 0);
-        tilemapRight.transform.position = transform.position + new Vector3(xOffset, 0, 0);
+        MoveMapBaseOnCurrentMap(tilemapTopLeft, new Vector3(-xOffset, yOffset, 0));
+        MoveMapBaseOnCurrentMap(tilemapTopRight, new Vector3(xOffset, yOffset, 0));
+        MoveMapBaseOnCurrentMap(tilemapLeft, new Vector3(-xOffset, 0, 0));
+        MoveMapBaseOnCurrentMap(tilemapRight, new Vector3(xOffset, 0, 0));
         MoveMapBaseOnCurrentMap(tilemapBottom, new Vector3(0, -yOffset, 0));
-        //tilemapBottom.transform.position = transform.position + new Vector3(0, -yOffset, 0);
-        tilemapBottomLeft.transform.position = transform.position + new Vector3(-xOffset, -yOffset, 0);
-        tilemapBottomRight.transform.position = transform.position + new Vector3(xOffset, -yOffset, 0);
+        MoveMapBaseOnCurrentMap(tilemapBottomLeft, new Vector3(-xOffset, -yOffset, 0));
+        MoveMapBaseOnCurrentMap(tilemapBottomRight, new Vector3(xOffset, -yOffset, 0));
     }
 
     private void MoveMapBaseOnCurrentMap(Tilemap tilemap, Vector3 vectorOffset)
