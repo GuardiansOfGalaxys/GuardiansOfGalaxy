@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
             {
                 Map map = tilemap.GetComponent<Map>();
                 map.AddToList(gameObject);
-                Debug.Log("add " + gameObject.name + " to map " + tilemap.name);
+                //Debug.Log("add " + gameObject.name + " to map " + tilemap.name);
                 return tilemap;
             }
         }

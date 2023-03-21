@@ -78,7 +78,7 @@ public class SpawnEnermy : MonoBehaviour
 
 
         //Debug.Log(random);
-        Debug.Log("Distance to viewport center: " + distanceToViewportCenter);
+        //Debug.Log("Distance to viewport center: " + distanceToViewportCenter);
         return a;
 
     }
