@@ -24,7 +24,10 @@ public class Item : MonoBehaviour
 
     public void OnDestroy()
     {
-        tilemapContainItem.GetComponent<Map>().objectsInMap.Remove(gameObject);
+        if (tilemapContainItem != null)
+        {
+            tilemapContainItem.GetComponent<Map>().objectsInMap.Remove(gameObject);
+        }
     }
 
 }
