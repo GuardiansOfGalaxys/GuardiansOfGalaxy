@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     GameObject pauseMenu;
+    [SerializeField]
+    Text timerText;
+    Timer gameTimer;
 
     public static bool isGamePaused = false;
 
@@ -56,4 +60,20 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(sceneID);
         //Debug.Log("Home");
     }
+
+    public void Next()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isGamePaused = false;
+        timerText.text = "10";
+
+        //for (int i = 10; i >= 0; i--)
+        //{
+        //    timerText.text = i.ToString();
+            
+        //}
+
+    }
+
 }

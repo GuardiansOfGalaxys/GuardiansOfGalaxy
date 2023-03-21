@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject item = itemController.SpawnItem(spawnPos);
             spawnItemTime = 0f;
-            AddToListOfMap(item);
+            item.GetComponent<Item>().tilemapContainItem = AddToListOfMap(item);
         }
         
     }
