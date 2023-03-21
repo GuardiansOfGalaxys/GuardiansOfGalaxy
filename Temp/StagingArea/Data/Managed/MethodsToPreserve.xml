@@ -1,0 +1,23 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="CharacterSelect">
+			<method name="HandleBackButtonOnClickEvent"/>
+			<method name="OnNextBtnClick"/>
+			<method name="OnPlayBtnClick"/>
+			<method name="OnPreBtnClick"/>
+		</type>
+		<type fullname="DifficultyMenu">
+			<method name="HandleEasyButtonOnClickEvent"/>
+			<method name="HandleHardButtonOnClickEvent"/>
+			<method name="HandleMediumButtonOnClickEvent"/>
+		</type>
+		<type fullname="GameOverEvents">
+			<method name="HandleBackButtonOnClickEvent"/>
+			<method name="HandleBackButtonOnClickEvent"/>
+		</type>
+		<type fullname="MainMenu">
+			<method name="HandleHighScoreButtonOnClickEvent"/>
+			<method name="HandlePlayButtonOnClickEvent"/>
+		</type>
+	</assembly>
+</linker>
