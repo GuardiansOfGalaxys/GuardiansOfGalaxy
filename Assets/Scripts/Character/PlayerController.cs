@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         if (timerES.Finished)
         {
             GameObject enermy = enermyController.SpawnObject();
-            AddToListOfMap(enermy);
+            enermy.GetComponent<Enermy>().tilemapContainItem = AddToListOfMap(enermy);
             timerES.Duration = Random.Range(ConfigurationUtils.MinSpawnDelay,
             ConfigurationUtils.MaxSpawnDelay);
             timerES.Run();
