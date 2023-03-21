@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class PlayerJoystick : MonoBehaviour
 {
+    Character player;
     public FixedJoystick Joystick;
     Rigidbody2D rb;
     Vector2 move;
-    public float moveSpeed;
+    //public float moveSpeed;
 
 
     private void Start()
     {
-
+        player = InitPlayer.player;
         rb = GetComponent<Rigidbody2D>();
         Joystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
     }
@@ -26,6 +27,6 @@ public class PlayerJoystick : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + move * player.speed * Time.fixedDeltaTime);
     }
 }
