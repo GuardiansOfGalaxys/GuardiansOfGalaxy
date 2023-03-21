@@ -20,7 +20,6 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("start map");
         AddMapToList();
     }
 
@@ -28,7 +27,6 @@ public class MapController : MonoBehaviour
     {
         if (collider.CompareTag("MapTrigger"))
         {
-            //BeforeMove();
             MoveMap();
             MoveObject();
         }
@@ -77,7 +75,6 @@ public class MapController : MonoBehaviour
         tilemaps.ForEach(tilemap =>
         {
             Map map = tilemap.GetComponent<Map>();
-            //List<GameObject> objectsInMap = map.objectsInMap;
             map.objectsInMap.ForEach(o =>
             {
                 o.transform.position += map.vectorMove;
@@ -114,7 +111,6 @@ public class MapController : MonoBehaviour
     {
         List<Tilemap> tilemaps = new();
         Dictionary<Tilemap, Vector3> tilemapAndVector = new();
-       // Debug.Log(tilemapBottom.cellBounds);
         if (direction.x > 0)
         {
             if (currentMap.name.Equals(Const.Map.tilemapTopRight) || currentMap.name.Equals(Const.Map.tilemapRight) || currentMap.name.Equals(Const.Map.tilemapBottomRight))
