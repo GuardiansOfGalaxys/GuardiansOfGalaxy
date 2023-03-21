@@ -83,12 +83,18 @@ public class HUD : MonoBehaviour
 		if (healthBar.value == 0)
 		{
 			//Destroy(player);
-			SetHighScore();
+			SetScore();
+            SetHighScore();
             SceneManager.LoadScene("EndGame");
         }
 		
 	}
-
+     void SetScore()
+    {
+        int currentScore = Score;
+        PlayerPrefs.SetInt("ScorePlayer", currentScore);
+        PlayerPrefs.Save();
+    }
     void SetHighScore()
     {
 
