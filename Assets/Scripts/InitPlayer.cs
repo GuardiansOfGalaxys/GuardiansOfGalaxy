@@ -13,6 +13,7 @@ public class InitPlayer : MonoBehaviour
     public Camera camera;
     public GameObject mapController;
     public GameObject itemController;
+    public GameObject enermyController;
     private float timer = 0f;
     private bool timerStarted = false;
     private bool timerUpdateCharacter = true;
@@ -52,6 +53,7 @@ public class InitPlayer : MonoBehaviour
                     camera = camera,
                     mapController = mapController.GetComponent<MapController>(),
                     itemController = itemController.GetComponent<ItemController>(),
+                    enermyController = enermyController.GetComponent<SpawnEnermy>(),
                 };
                 break;
             case "HeroGun":
@@ -60,6 +62,7 @@ public class InitPlayer : MonoBehaviour
                     camera = camera,
                     mapController = mapController.GetComponent<MapController>(),
                     itemController = itemController.GetComponent<ItemController>(),
+                    enermyController = enermyController.GetComponent<SpawnEnermy>(),
                 };
                 break;
         }
