@@ -7,7 +7,7 @@ using TMPro;
 
 public class MainPlayScreenHUD : IntEventInvoker
 {
-    Timer gameTimer;
+   public Timer gameTimer;
 
     // high score menu support
     [SerializeField]
