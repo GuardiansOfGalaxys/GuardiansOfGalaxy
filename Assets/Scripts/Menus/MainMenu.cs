@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
     }
     public void HandleQuitButtonOnClickEvent()
     {
-        AudioManager.Play(AudioClipName.MenuButtonClick);
+
         Application.Quit();
     }
 }

@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -11,15 +12,18 @@ public class Gun : MonoBehaviour
 
     public float bulletForce = 20f;
 
+
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+      if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
-            
         }
+       
     }
+
     void Shoot()
     {
         GameObject bull = Instantiate(bullet, firePoint.position, firePoint.rotation);
