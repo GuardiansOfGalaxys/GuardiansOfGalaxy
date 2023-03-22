@@ -72,7 +72,7 @@ public class Character : IntEventInvoker
         Move();
     }
 
-    private void Move()
+    public void Move()
     {
         body.MovePosition(body.position + axisMovement * speed * Time.fixedDeltaTime);
         camera.transform.position = new Vector3(body.position.x, body.position.y, -10);

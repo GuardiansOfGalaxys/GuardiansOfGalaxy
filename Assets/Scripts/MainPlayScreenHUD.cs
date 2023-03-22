@@ -9,6 +9,7 @@ public class MainPlayScreenHUD : IntEventInvoker
 {
    public Timer gameTimer;
 
+    public float targetRatio = 16f / 9f;
     // high score menu support
     [SerializeField]
     GameObject hud;
@@ -35,7 +36,8 @@ public class MainPlayScreenHUD : IntEventInvoker
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera cam = GetComponent<Camera>();
+        cam.aspect = targetRatio;
     }
 
     // Update is called once per frame
