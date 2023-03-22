@@ -44,7 +44,7 @@ public class HUD : MonoBehaviour
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
 		timerText.text = "60";
 
-	}
+    }
 
 	#region Properties
 

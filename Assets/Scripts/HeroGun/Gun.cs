@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
+﻿
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -10,21 +9,26 @@ public class Gun : MonoBehaviour
     [SerializeField]
     public Transform firePoint;
 
-    public float bulletForce = 20f;
+    public float bulletForce = 5f;
 
+    public Button button;
 
+    void Start()
+    {
+        button = GameObject.Find("BtnFire").GetComponent<Button>();
+        button.onClick.AddListener(Shoot);
+    }
 
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-       
+        //if (GameObject.Find("BtnFire").GetComponent<Button>())
+        //{
+            //Shoot();
+        //}
     }
 
-    void Shoot()
+    public void Shoot()
     {
         GameObject bull = Instantiate(bullet, firePoint.position, firePoint.rotation);
         // get the rigidbody component of the bullet object
