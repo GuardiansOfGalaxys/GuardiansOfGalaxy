@@ -7,9 +7,12 @@ public class PlayerJoystick : MonoBehaviour
 {
     Character player;
     public FixedJoystick Joystick;
+
     Rigidbody2D rb;
     Vector2 move;
     //public float moveSpeed;
+
+    public static bool PointerDown = false;
 
 
     private void Start()
@@ -23,10 +26,23 @@ public class PlayerJoystick : MonoBehaviour
     {
         move.x = Joystick.Horizontal;
         move.y = Joystick.Vertical;
+        //rotation
+        float hAxis = move.x;
+        float vAxis = move.y;
+        float zAxis = Mathf.Atan2(hAxis,vAxis) * Mathf.Rad2Deg;
+        transform.eulerAngles = new Vector3(0f, 0f, -zAxis);
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + move * player.speed * Time.fixedDeltaTime);
+        if(PointerDown)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            rb.MovePosition(rb.position + move * player.speed * Time.fixedDeltaTime);
+        }
+        
     }
 }
