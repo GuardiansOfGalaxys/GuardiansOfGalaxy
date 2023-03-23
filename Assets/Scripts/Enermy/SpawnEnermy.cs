@@ -43,7 +43,7 @@ public class SpawnEnermy : MonoBehaviour
 
         GameObject a;
         //Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); // Tọa độ tâm của viewport
-        float distance = 8f; // Khoảng cách mong muốn giữa quái và tâm của viewport
+        float distance = 12f; // Khoảng cách mong muốn giữa quái và tâm của viewport
         //Vector3 randomOffset = Random.insideUnitCircle.normalized * distance; // Vector có độ dài bằng distance và hướng ngẫu nhiên
         Vector3 randomPosition;
         float distanceToViewportCenter;

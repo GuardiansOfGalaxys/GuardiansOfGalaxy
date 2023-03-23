@@ -42,7 +42,7 @@ public class HUD : MonoBehaviour
 
 		// add listener for TimerChangedEvent and initialize timer text
 		EventManager.AddListener(EventName.TimerChangedEvent, HandleTimerChangedEvent);
-		timerText.text = "60";
+		timerText.text = "30";
 
     }
 

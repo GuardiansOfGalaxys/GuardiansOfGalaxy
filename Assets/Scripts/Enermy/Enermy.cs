@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class Enermy : IntEventInvoker
@@ -12,9 +13,6 @@ public class Enermy : IntEventInvoker
     private float currentHealth;
     private float currentAttackSpeed;
     private float currenAttack;
-    // round playing
-    public int round = 1;
-
     private Transform target;
     private float distance;
     private int currentAttack;
@@ -26,6 +24,10 @@ public class Enermy : IntEventInvoker
     public HUD hub;
     public int damageEnemy;
     public Tilemap tilemapContainItem;
+    private bool timerStarted = false;
+    private float timer = 0f;
+    private bool timerUpdateCharacter = true;
+
 
 
     // Start is called before the first frame update
@@ -103,21 +105,34 @@ public class Enermy : IntEventInvoker
             Destroy(gameObject);
         }
     }
-    //public void UpdateEnemy()
-    //{
-    //    // Check if the round has changed
-    //    if (GameManager.instance.currentRound != round)
-    //    {
-    //        // Update the round number
-    //        round = GameManager.instance.currentRound;
+    public void UpdateEnemy()
+    {
+        StartTimer();
+        if (timerStarted)
+        {
+            //Debug.Log("2. timerStarted:" + timerStarted + " timer: " + timer);
+            timer += Time.deltaTime;
+            if (timer >= 30f)
+            {
+                // Increase HP, attack, and speed by 10%
+                currentHealth += 2 ;
+                currenAttack += 1;
+                currentSpeed += 0.2f;
+                // Reset timer
+                //StopTimer();
+                timerUpdateCharacter = true;
+                if (timerUpdateCharacter == true)
+                {
+                    //Debug.Log( " timer: " + timer);
+                    // Show properties update scene
+                    Time.timeScale = 0f;
+                    timer = 0f;
+                    timerUpdateCharacter = false;
+                }
 
-    //        // Increase the enemy's health and attack speed for the new round
-    //        currentHealth += 2 * (round - 1);
-    //        currenAttack += (round - 1);
-    //        currentSpeed += 0.2f * (round - 1);
-    //        currentAttackSpeed = currentAttackSpeed;
-    //    } 
-    //}
+            }
+        }
+      }
 
     public void TakeDamageInPlayer(int damage)
     {
@@ -161,5 +176,13 @@ public class Enermy : IntEventInvoker
         }
     }
 
+    public void StartTimer()
+    {
+        timerStarted = true;
+    }
 
+    public void StopTimer()
+    {
+        timerStarted = false;
+    }
 }

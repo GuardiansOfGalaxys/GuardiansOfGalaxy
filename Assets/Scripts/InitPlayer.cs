@@ -96,7 +96,7 @@ public class InitPlayer : MonoBehaviour
                 
                 //Debug.Log("2. timerStarted:" + timerStarted + " timer: " + timer);
                 timer += Time.deltaTime;
-                if (timer >= 60f)
+                if (timer >= 30f)
                 {
                     // Increase HP, attack, and speed by 10%
                     h1.text = "" + player.health;

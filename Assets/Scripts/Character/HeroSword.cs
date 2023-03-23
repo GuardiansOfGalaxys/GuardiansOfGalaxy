@@ -8,9 +8,8 @@ public class HeroSword : Character
         health = 15;
         currentHealth = health;
         damage = 12;
-        speed = 8;
+        speed = 5;
         oldSpeed = speed;
         speedAttack = 1f;
-        Debug.Log("he:" + health + " dama:"+ damage+" speed:" + speed+ " speedAttack"+ speedAttack);
     }
 }

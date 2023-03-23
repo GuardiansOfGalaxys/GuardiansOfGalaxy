@@ -22,7 +22,7 @@ public class MainPlayScreenHUD : IntEventInvoker
         // create and start game timer
         gameTimer = gameObject.AddComponent<Timer>();
         //gameTimer.AddTimerFinishedEventListener(HandleGameTimerFinishedEvent);
-        gameTimer.Duration = 60;
+        gameTimer.Duration = 30;
         gameTimer.Run();
 
         // add self as timer changed event invoker

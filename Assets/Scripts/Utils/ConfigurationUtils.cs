@@ -135,11 +135,11 @@ public static class ConfigurationUtils
 
     public static float HardSpeedEnemy1
     {
-        get { return 4f; }
+        get { return 3.5f; }
     }
     public static float MediumSpeedEnemy1
     {
-        get { return 3f; }
+        get { return 2.5f; }
     }
     public static float EasySpeedEnemy1
     {
@@ -148,11 +148,11 @@ public static class ConfigurationUtils
 
     public static float HardSpeedEnemy2
     {
-        get { return 3f; }
+        get { return 2.5f; }
     }
     public static float MediumSpeedEnemy2
     {
-        get { return 2f; }
+        get { return 1.5f; }
     }
     public static float EasySpeedEnemy2
     {

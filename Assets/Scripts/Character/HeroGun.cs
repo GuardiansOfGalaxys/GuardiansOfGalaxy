@@ -8,7 +8,7 @@ public class HeroGun : Character
         health = 12;
         currentHealth = health;
         damage = 15;
-        speed = 10;
+        speed = 8;
         oldSpeed = speed;
         speedAttack = 0.75f;
         //Debug.Log("he:" + health + " dama:" + damage + " speed:" + speed + " speedAttack" + speedAttack);
